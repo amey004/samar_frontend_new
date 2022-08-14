@@ -7,7 +7,9 @@ import {
   Collapse,
   NavbarBrand,
 } from "reactstrap";
-import { NavLink} from "react-router-dom"
+import { NavLink} from "react-router-dom";
+import logo from "./images/samar_logo.png";
+
 
 class navbar extends Component {
   constructor(props) {
@@ -28,9 +30,15 @@ class navbar extends Component {
         <Navbar expand="md">
           <NavbarToggler className="mr-2" onClick={this.toggleNav} />
           <NavbarBrand className="mr-auto" href="/">
-            <h4>
-              <strong>SAMAR</strong>
-            </h4>
+            <div style={{display:"inline"}}>
+            <img src={logo} alt="" style={{
+              height:"8vh",
+              display:"inline-block"
+            }}/>
+            <p style={{display:"inline-block", marginLeft:"1vw", fontSize:"15px"}}>Slum Administration, Management and Rehabilitation</p>
+            </div>
+            
+            
           </NavbarBrand>
           <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav classname="container-fluid justify-content-end" navbar>
@@ -43,7 +51,7 @@ class navbar extends Component {
                     color: "black",
                   }}
                 >
-                  <h4>Home</h4>
+                  <h5>Home</h5>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -55,7 +63,7 @@ class navbar extends Component {
                     color: "black",
                   }}
                 >
-                  <h4>FAQ & Policies</h4>
+                  <h5>FAQ & Policies</h5>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -67,7 +75,7 @@ class navbar extends Component {
                     color: "black",
                   }}
                 >
-                  <h4>Report/Suggest</h4>
+                  <h5>Report/Suggest</h5>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -77,7 +85,7 @@ class navbar extends Component {
                   to="/login"
                   style={{ textDecoration: "none" }}
                 >
-                  <h4>Login</h4>
+                  <h5>Login</h5>
                 </NavLink>
               </NavItem>
             </Nav>

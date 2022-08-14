@@ -3,6 +3,7 @@ import temp_img from "../images/temp_img.png";
 import temp_img2 from "../images/temp_img2.png";
 import Carousel from "react-material-ui-carousel";
 import { Box } from "@material-ui/core";
+import { Container } from "reactstrap";
 
 function NewsCarousel() {
   var items = [
@@ -22,7 +23,7 @@ function NewsCarousel() {
       <div>
         <Carousel className="carousel">
           {items.map((item, i) => (
-            <Box component="span" sx={{widht:250,height:250}}>
+            <Box component="span">
               <Item key={i} item={item}/>
             </Box>
           ))}
@@ -34,9 +35,10 @@ function NewsCarousel() {
 
 function Item(props) {
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <img src={props.item.image} alt="" className="carousel-img"></img>
-      <p>{props.item.description}</p>
+      <div className="textbox">{props.item.description}</div>
+      
     </div>
   );
 }
