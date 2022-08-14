@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { NavLink} from "react-router-dom";
 import logo from "./images/samar_logo.png";
+import {Container} from "@material-ui/core"
 
 
 class navbar extends Component {
@@ -26,19 +27,29 @@ class navbar extends Component {
   }
   render() {
     return (
-      <div>
-        <Navbar expand="md">
+      <div style={{ display: "flex" }}>
+        <Navbar expand="md" style={{ width: "100%" }}>
           <NavbarToggler className="mr-2" onClick={this.toggleNav} />
-          <NavbarBrand className="mr-auto" href="/">
-            <div style={{display:"inline"}}>
-            <img src={logo} alt="" style={{
-              height:"8vh",
-              display:"inline-block"
-            }}/>
-            <p style={{display:"inline-block", marginLeft:"1vw", fontSize:"15px"}}>Slum Administration, Management and Rehabilitation</p>
+          <NavbarBrand className="" href="/" style={{ width: "100%" }}>
+            <div style={{ display: "inline" }}>
+              <img
+                src={logo}
+                alt=""
+                style={{
+                  height: "8vh",
+                  display: "inline-block",
+                }}
+              />
+              <p
+                style={{
+                  display: "inline-block",
+                  marginLeft: "1vw",
+                  fontSize: "15px",
+                }}
+              >
+                Slum Administration, Management and Rehabilitation
+              </p>
             </div>
-            
-            
           </NavbarBrand>
           <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav classname="container-fluid justify-content-end" navbar>
@@ -54,7 +65,7 @@ class navbar extends Component {
                   <h5>Home</h5>
                 </NavLink>
               </NavItem>
-              <NavItem>
+              <NavItem style={{width:"10vw"}}>
                 <NavLink
                   className="nav-link"
                   exact
