@@ -190,9 +190,9 @@ code {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  padding: 4vw;
+  padding: 3vw;
   height: auto;
-  width:50vw;
+  width:60vw;
   color: black;
   border-radius: 3vw;
   background-color: #abecec;
@@ -223,7 +223,7 @@ code {
   background-color: #abecec;
   color: #FFF4DD;
   border: #78e8e8;
-  font-size: x-small;
+  font-size: 9px;
   /* height: 2vw; */
 }
 
@@ -231,40 +231,17 @@ code {
   margin: 2vw;
 }
 
-.container-row{
-  display: inline;
-  /* margin-top: 20vw; */
-  padding: 2vw;
-  /* margin: 2vw; */
-}
 
 .container-faq{
-  display: inline-block;
-  flex: 1;
-  margin-top: 8vw;
-  width: 45vw;
-  margin-right: 12vw;
-  height: 70vh;
-  vertical-align: top;
-  background-color: #FFC857;
-  border-radius: 3vh;
-  padding: 2vw;
+  background-color: #abecec;
+  padding:2vw;
+  margin-top: 5vh;
+  border-radius: 5vh;
 }
 
-.container-policies{
-  display: inline-block;
-  flex: 1;
-  margin-top: 8vw;
-  background-color: #12656E;
-  width: 28vw;
-  height: 70vh;
-  vertical-align: top;
-  border-radius: 5vh;
-  padding: 2vw;
-}
 
 .policy{
-  background-color: #FFD379;
+  background-color: #4bcece;
   margin-top:1vw;
   padding:1vw;
   display: flex;
@@ -302,11 +279,11 @@ code {
 
 .MuiAccordion-root{
   justify-content: center;
-  background-color: #74B2B8;
+  background-color: #78e8e8;
   color: white;
   margin-top: 1vw;
-  width: 25vw;
-  display: block;
+  width: 35vw;
+  /* display: block; */
 }
 
 .row-element{

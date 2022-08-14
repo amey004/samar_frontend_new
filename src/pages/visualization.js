@@ -20,7 +20,7 @@ function Visualize(){
             <Box style={{height:"100vh", marginLeft:"auto",marginRight:"auto"}}>
                 Map
             </Box>
-            <Box  sx={{ flexGrow: 1 }} position={'center'} alignItems={'center'} paddingBottom={"5vh"} paddingLeft={"15vh"}>
+            <Box  sx={{ flexGrow: 1 }} paddingBottom={"5vh"} paddingLeft={"15vh"}>
                 <Grid container spacing={3}>
                     <Grid item xs={8}>
                         <Item>xs=4</Item>

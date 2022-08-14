@@ -6,6 +6,7 @@ import Register from './pages/register';
 import FaqsAndPolicies from './pages/faqs_and_policies';
 import ViewReport from './pages/report_template';
 import ErrorPage from './pages/error';
+import ReportSuggest from "./pages/report_suggest";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path="/faq" element={<FaqsAndPolicies/>}/>
-          <Route path='/report' element={<ViewReport/>}/>
+          <Route path='/report' element={<ReportSuggest/>}/>
           <Route path='/error' element={<ErrorPage/>} />
         </Routes>
       </Router>

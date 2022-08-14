@@ -1,4 +1,4 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Grid } from "@mui/material";
 import React from "react";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -48,37 +48,56 @@ function FaqsAndPolicies(){
             heading:"Where to report misconducts?",
             details:"There is a special section for reporting any misconduct observed. You can find it in the navbar",
         },
+        {   
+            questionId:4,
+            heading:"Registration",
+            details:"Eligible citizens can register themselves for the appropriate policy by visiting the nearest Municipal Corporation.",
+        },
+        {   
+            questionId:5,
+            heading:"Am I eligible?",
+            details:"Please click on policy name to know more about the policies",
+        },  
+        {   
+            questionId:6,
+            heading:"Where to report misconducts?",
+            details:"There is a special section for reporting any misconduct observed. You can find it in the navbar",
+        },
     ];
 
     return (
-        <div className="container-row">
-            <Box className="container-faq">
-                <div style={{
-                    fontWeight:500,
-                }}>Different Policies of the Government</div>
-                {PoliciesDetails.map((e) =>{
-                    console.log(e);
-                    return (<PolicyDetails policyName={e.policyName} ministry={e.ministry} image={e.image} details={e.details} launchDate={e.launchDate}/>)
-                } )}
-            </Box>
-            <Box className="container-policies">
-                <div style={{
-                        fontWeight:500,
-                        color:"#FFFFFF",
-                    }}>Frequently Asked Questions</div>
-                    {questions.map((e) => {
-                        return (<FaqQuestion heading={e.heading} details={e.details}/>)
-                    })}
-            </Box>
-        </div>
+            <Grid container spacing={2} padding={"2vh"}>
+                <Grid item padding={"2vh"} xs={6} marginLeft={"3vw"}>
+                    <Box className="container-faq">
+                        <div style={{
+                            fontWeight:500,
+                        }}>Different Policies of the Government</div>
+                        {PoliciesDetails.map((e) =>{
+                            console.log(e);
+                            return (<PolicyDetails policyName={e.policyName} ministry={e.ministry} image={e.image} details={e.details} launchDate={e.launchDate}/>)
+                        } )}
+                    </Box>
+                </Grid>
+                <Grid item xs={5}>
+                    <Box className="container-faq">
+                        <div style={{
+                                fontWeight:500,
+                                color:"#000000",
+                            }}>Frequently Asked Questions</div>
+                            {questions.map((e) => {
+                                return (<FaqQuestion heading={e.heading} details={e.details}/>)
+                            })}
+                    </Box>
+                </Grid>
+            </Grid>
     );
 }
 
 
-function FaqQuestion(faqQn) {
+function FaqQuestion(faqQn) {  
     return (
       <div >
-        <Accordion className="accordion">
+        <Accordion>
           <AccordionSummary
              expandIcon={<HiPlus/>}
             //  aria-controls="panel1a-content"
@@ -133,7 +152,7 @@ function PolicyDetails(pol){
             </Box>
             <Dialog
                 style={{
-                    color:"#FFD379"
+                    color:"#abecec"
                 }}
                 open={open}
                 onClose={handleClose}
@@ -156,14 +175,12 @@ function PolicyDetails(pol){
                     ref={descriptionElementRef}
                     tabIndex={-1}
                     >
-                        <div>
-                            Launch Date:
-                            {pol.launchDate} 
-                        </div>
-                       <div>
-                            Details: 
-                            {pol.details}
-                       </div>
+                        <p>Launch Date: {pol.launchDate}</p>
+                        <p>
+                        Details:<br/>
+                        {pol.details}
+                        </p>
+                            
                         
                     </DialogContentText>
                 </DialogContent>
