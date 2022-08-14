@@ -17,7 +17,7 @@ code {
 }
 .navbar{
   background-color: #abecec;
-  
+  box-shadow: 0px 8px 8px rgb(0 0 0 / 0.25),0px -2px 8px rgb(0 0 0 / 0.25);
 }
 
 
@@ -72,7 +72,7 @@ code {
   height: 88vh;
   /* font-size: small; */
   color: #000000;
-  box-shadow: 0px 8px 8px rgb(0 0 0 / 0.25),0px -2px 8px rgb(0 0 0 / 0.25);
+  /*  */
   align-content: right;
 }
 
@@ -185,17 +185,17 @@ code {
 
 .login-box{
   display: flex;
-  margin-top: 8vw;
+  margin-top: 5vh;
   justify-content: center;
   align-items: center;
-  margin-left: 20vw;
-  margin-right: 15vw;
+  margin-left: auto;
+  margin-right: auto;
   padding: 4vw;
-  height: 25vw;
+  height: auto;
   width:50vw;
   color: black;
   border-radius: 3vw;
-  background-color: #FFF4DD;
+  background-color: #abecec;
 }
 
 .row-login{
@@ -206,7 +206,7 @@ code {
 }
 
 .toggle-btn{
-  background-color: #FFD379;
+  background-color: #abecec;
   color: black;
 }
 
@@ -220,9 +220,9 @@ code {
   width: 15vw;
   /* height: 2.6vw; */
   margin-top: 2vw;
-  background-color: #FFD379;
+  background-color: #abecec;
   color: #FFF4DD;
-  
+  border: #78e8e8;
   font-size: x-small;
   /* height: 2vw; */
 }

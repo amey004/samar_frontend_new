@@ -10,7 +10,7 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height:"45vh",
+    height:"70vh",
   }));
   
 
@@ -20,9 +20,9 @@ function Visualize(){
             <Box style={{height:"100vh", marginLeft:"auto",marginRight:"auto"}}>
                 Map
             </Box>
-            <Box  sx={{ flexGrow: 1 }} position={'center'} alignContent={'center'}>
+            <Box  sx={{ flexGrow: 1 }} position={'center'} alignItems={'center'} paddingBottom={"5vh"} paddingLeft={"15vh"}>
                 <Grid container spacing={3}>
-                    <Grid item xs={4}>
+                    <Grid item xs={8}>
                         <Item>xs=4</Item>
                     </Grid>
                     <Grid item xs={3}>
@@ -31,10 +31,10 @@ function Visualize(){
                     <Grid item xs={4}>
                         <Item>xs=4</Item>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={7}>
                         <Item>xs=7</Item>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={11}>
                         <Item>xs=4</Item>
                     </Grid>
                     
