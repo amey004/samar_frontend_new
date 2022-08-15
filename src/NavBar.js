@@ -30,7 +30,7 @@ class navbar extends Component {
       <div style={{ display: "flex" }}>
         <Navbar expand="md" style={{ width: "100%" }}>
           <NavbarToggler className="mr-2" onClick={this.toggleNav} />
-          <NavbarBrand className="" href="/" style={{ width: "100%" }}>
+          <NavbarBrand className="" href="/" style={{ width:"100%" }}>
             <div style={{ display: "inline" }}>
               <img
                 src={logo}

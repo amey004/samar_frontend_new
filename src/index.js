@@ -4,11 +4,29 @@ import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux"
+import keplerGlReducer from "kepler.gl/reducers";
+import {
+  legacy_createStore as createStore,
+  combineReducers,
+  applyMiddleware,
+} from "redux";
+import { taskMiddleware } from "react-palm/tasks";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+const reducers = combineReducers({
+  keplerGl: keplerGlReducer,
+});
+
+const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
