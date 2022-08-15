@@ -20,19 +20,6 @@ code {
   box-shadow: 0px 8px 8px rgb(0 0 0 / 0.25),0px -2px 8px rgb(0 0 0 / 0.25);
 }
 
-
-.menu{
-  float: right;
-  display: inline;
-  height: 20vh;
-  padding-top: 10vw;
-  padding: 1vw;
-  /* display: flex; */
-  align-items: right;
-  justify-content: right;
-  font: size 25px;
-  color: #FFF4DD;
-}
 .space{
   width: 400px;
 }
@@ -51,16 +38,6 @@ code {
   color: #FFF4DD;
 }
 
-.slumbg{
-  /* height:600px; */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  /* align-content:flex-end; */
-  /* align-self: baseline; */
-}
-
 .home{
   display: block;
   justify-content: center;
@@ -68,26 +45,18 @@ code {
 }
 
 .carousel{
-  /* width: 100vw; */
   height: 88vh;
-  /* font-size: small; */
   color: #000000;
-  /*  */
   align-content: right;
 }
 
 .carousel-img{
-  /* min-height: 20%; */
-  /* max-height: 45%; */
-  /* min-width: min-content; */
-  /* display: block; */
   height: 88vh;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   opacity: 0.75;
   object-fit:cover;
-  /* border-radius: 20px; */
 }
 
 .textbox{
@@ -107,24 +76,6 @@ code {
   color: white;
 }
 
-.logo{
-  width: 75%;
-  
-}
-
-.samar{
-  width: 60%;
-  margin: 10vh;
-  height: 20vh;
-  /* align-content:center; */
-  /* height: auto; */
-  padding: 15px;
-  font: 18px Roboto;
-  /* font-weight: 100; */
-  color: #ffffff;
-  /* align-content: right; */
-}
-
 .button{
   background-color: #177E89;
   color: #177E89;
@@ -136,45 +87,6 @@ code {
   align-items: center;
   align-content: center;
   margin: 5vw;
-}
-
-.map{
-  width: 550px;
-  height: 500px;
-  background-color: #177E89;
-  /* padding-top: 80px; */
-  /* padding: 30px; */
-  margin-right: 30px;
-  margin-left: 50px;
-  margin-top: 80px;
-  display: inline-block;
-}
-
-.info{
-  width: 500px;
-  height: 400px;
-  background-color: #177E89;
-  /* padding-top: 80px; */
-  /* padding: 30px; */
-  margin-left: 20px;
-  margin-top: 80px;
-  display: inline-block;
-  justify-content: center;
-  align-content: center;
-}
-
-.stats{
-  width: 600px;
-  height: 280px;
-  background-color: #177E89;
-  /* padding-top: 80px; */
-  /* padding: 30px; */
-  margin-left: 20px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  display: inline-block;
-  justify-content: center;
-  align-content: center;
 }
 
 .text{
@@ -227,11 +139,6 @@ code {
   /* height: 2vw; */
 }
 
-.yellow-btn{
-  margin: 2vw;
-}
-
-
 .container-faq{
   background-color: #abecec;
   padding:2vw;
@@ -267,7 +174,6 @@ code {
 .white-heading{
   color: #FFFFFF;
   font-size: "15px";
-  /* font-weight: 500; */
 }
 
 .white-subheading{
@@ -283,91 +189,8 @@ code {
   color: white;
   margin-top: 1vw;
   width: 35vw;
-  /* display: block; */
 }
 
-.row-element{
-  display: inline-block;
-  flex: 2;
-}
-
-.project-container{
-  width: 35vw;
-  margin-top: 1.5vh;
-  /* margin-bottom: 1vh; */
-  margin-right: 8vw;
-  height: 32vh;
-  /* vertical-align: top; */
-  background-color: #12656E;
-  border-radius: 3vh;
-  padding: 1.5vw;
-}
-
-.grievances-container{
-  display: inline-block;
-  flex: 1;
-  width: 30vw;
-  margin-top: 2vh;
-  /* margin-right: 2vw; */
-  height: 70vh;
-  /* vertical-align: top; */
-  background-color: #12656E;
-  border-radius: 3vh;
-  padding: 1vw;
-  overflow: clip;
-}
-/* 
-.hs{
-  overflow: scroll;
-} */
-
-.item {
-  /* scroll-snap-align: center; */
-  width:12vw;
-  height:30vh;
-  margin-right: 1vw;
-  background-color: #74B2B8;
-  padding: calc(var(--gutter) / 2 * 1.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1.5vw;
-}
-
-.grievance-item{
-  width:28vw;
-  height:10vh;
-  
-  display: block;
-  margin: 1vw;
-  background-color: #74B2B8;
-
-}
-
-.notices-container{
-  width: 35vw;
-  margin-top: 1.5vh;
-  margin-bottom: 1vh;
-  margin-right: 8vw;
-  height: 32vh;
-  display:grid;
-  overflow: hidden;
-  /* vertical-align: top; */
-  background-color: #12656E;
-  border-radius: 3vh;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5vw;
-}
-
-.notice-item{
-  width:15vw;
-  display: flex;
-  /* display: grid; */
-  /* margin: 1vw; */
-  padding:0.5vw;
-  overflow: clip;
-  border-radius: 1vw;
-  background-color: #74B2B8;
+.MuiDialog-root{
+  color: #78e8e8;
 }

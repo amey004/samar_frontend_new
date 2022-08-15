@@ -1,6 +1,6 @@
 import { ToggleButton, ToggleButtonGroup, TextField, Button} from "@mui/material";
 import InputAdornment from '@mui/material/InputAdornment';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import login from '../lottieFiles/register.json';
 import Lottie from "react-lottie";
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
@@ -20,12 +20,22 @@ function Login(){
         },
      };
 
-    function handleLogin() {
+     useEffect(() => {
+        handleLogin()
+     },[usertype]);
+
+    function handleLogin(){
         console.log(usertype);
         if(usertype === 'developer'){
             setPage('/dev-dashboard');
         }
         else if(usertype === 'govt'){
+            setPage('/govt-dashboard');
+        }
+        else if(usertype==='inhabitant'){
+            setPage('/error');
+        }
+        else{
             setPage('/error');
         }
      }
@@ -102,7 +112,7 @@ function Login(){
                         marginLeft:"5vw",
                         fontSize: "small"
                         }}
-                        onClick={()=>handleLogin}>
+                        onClick={handleLogin}>
                         Login
                     </Button>
                 </Link>

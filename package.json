@@ -11,6 +11,7 @@
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-horizontal-scrolling-menu": "^3.2.0",
     "react-icons": "^4.4.0",
     "react-lottie": "^1.2.3",
     "react-material-ui-carousel": "^3.4.2",
