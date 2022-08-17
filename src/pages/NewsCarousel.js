@@ -20,7 +20,7 @@ function NewsCarousel() {
   ];
   return (
     <>
-      <div>
+      <div style={{marginTop:"12vh"}}>
         <Carousel className="carousel">
           {items.map((item, i) => (
             <Box component="span">

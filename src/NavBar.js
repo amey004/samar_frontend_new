@@ -28,7 +28,7 @@ class navbar extends Component {
   render() {
     return (
       <div style={{ display: "flex" }}>
-        <Navbar expand="md" style={{ width: "100%" }}>
+        <Navbar expand="md" style={{ width: "100%" }} fixed="top">
           <NavbarToggler className="mr-2" onClick={this.toggleNav} />
           <NavbarBrand className="" href="/" style={{ width:"100%" }}>
             <div style={{ display: "inline" }}>
@@ -44,7 +44,7 @@ class navbar extends Component {
                 style={{
                   display: "inline-block",
                   marginLeft: "1vw",
-                  fontSize: "15px",
+                  fontSize: "20px",
                 }}
               >
                 Slum Administration, Management and Rehabilitation
@@ -65,7 +65,7 @@ class navbar extends Component {
                   <h5>Home</h5>
                 </NavLink>
               </NavItem>
-              <NavItem style={{width:"10vw"}}>
+              <NavItem style={{width:"8.4vw"}}>
                 <NavLink
                   className="nav-link"
                   exact

@@ -97,7 +97,7 @@ export const Household = () => {
     getData();
   },[])
   return (
-    <Bar data={hhdata} options={options} />
+    <Bar data={hhdata} options={options}/>
   );
 }
 
