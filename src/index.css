@@ -194,3 +194,7 @@ code {
 .MuiDialog-root{
   color: #78e8e8;
 }
+
+.navItem{
+  width:"10vw";
+}

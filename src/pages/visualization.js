@@ -27,8 +27,8 @@ function Visualize(){
         >
           Map
         </Box>
-        <Box paddingBottom={"5vh"}>
-          <Grid container spacing={3} justifyContent="center"  className="ml-1">
+        <Box sx={{ flexGrow: 1 }} paddingBottom={"5vh"}>
+          <Grid container justifyContent={"center"} spacing={3}>
             <Grid item xs={12} md={8}>
               <Item>
                 <h2>Wardwise Slum Households</h2>
@@ -56,7 +56,7 @@ function Visualize(){
             <Grid item xs={12} md={7}>
               <Item>
                 <h2>Tenability</h2>
-                <div style={{ height: "55%" }}>
+                <div style={{ height: "50%" }}>
                   <Tenability />
                 </div>
               </Item>

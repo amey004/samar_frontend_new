@@ -2,7 +2,7 @@ import NewsCarousel from "./NewsCarousel.js";
 
 import React from "react";
 import Visualize from "./visualization.js";
-import Map from "./maps.js";
+// import Map from "./kepler/maps";
 
 
 function LandingPage() {
@@ -11,7 +11,7 @@ function LandingPage() {
       <div className="home">
       <NewsCarousel />
       <Visualize/>
-      <Map/>
+      {/* <Map/> */}
       </div>
     </>
   );
