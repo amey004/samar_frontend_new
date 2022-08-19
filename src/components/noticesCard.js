@@ -29,7 +29,7 @@ function NoticeItem(props){
     }, [open]);
 
     return (
-        <div>
+        <div className="noticeItem">
             <Card style={{
                 height:"10vh",
                 width:"15vw",
@@ -45,11 +45,11 @@ function NoticeItem(props){
                 {props.notice.subject}</p>
             </Card>
             <Dialog style={{
-                    color:"#4bcece"
+                    color:"#478e93"
                 }}
                 PaperProps={{
                     style:{
-                        backgroundColor:"#4bcece"
+                        backgroundColor:"#478e93"
                     }
                 }}
                 open={open}
@@ -58,7 +58,7 @@ function NoticeItem(props){
                 >
                 <DialogTitle style={{display:"flex"}}>
                     <div style={{
-                        backgroundColor:"#4bcece",
+                        backgroundColor:"#478e93",
                         fontFamily:"Barlow Condensed"
                     }}>
                         <Grid container spacing={2}>
@@ -90,7 +90,7 @@ function NoticeItem(props){
                 </DialogTitle>
                 <DialogContent dividers>
                     <div style={{
-                        backgroundColor:"#4bcece"
+                        backgroundColor:"#478e93"
                     }}>
                         <div style={{fontWeight:"500", paddingBottom:"-10px"}}>Notice Regarding:</div>
                         {props.notice.subject}
@@ -106,14 +106,14 @@ function NoticeItem(props){
                         textTransform:"capitalize"
                     }}>
                         <Button variant="outlined" style={{
-                           backgroundColor: "#abecec",
+                           backgroundColor: "#EEF0F2",
                            textTransform:"capitalize",
                            color:"black",
                            margin:"2vh",
                            fontFamily:"Barlow Condensed"
                         }}>Notice Sent</Button>
                         <Button variant="outlined" style={{
-                            backgroundColor: "#abecec",
+                            backgroundColor: "#EEF0F2",
                             textTransform:"capitalize",
                             color:"black",
                             margin:"2vh",
@@ -131,7 +131,7 @@ function Notices(props){
     return (
         <Box sx={{ flexGrow: 1 }} style={{
             margin:"2vh",
-            backgroundColor:"#4bcece",
+            backgroundColor:"#478e93",
             borderRadius:"10px",
             padding:"5px",
             height:"36vh"

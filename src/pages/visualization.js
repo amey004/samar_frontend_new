@@ -23,13 +23,13 @@ const Item = styled(Paper)(({ theme }) => ({
 function Visualize(){
     return (
       <div>
-        <Box
+        {/* <Box
           style={{ height: "100vh", marginLeft: "auto", marginRight: "auto", alignContent:"center", justifyContent:"center"}}
         >
           Map
-         {/* <Map/> */}
-        </Box>
-        <Box sx={{ flexGrow: 1 }} paddingBottom={"5vh"}>
+         <Map/>
+        </Box> */}
+        <Box sx={{ flexGrow: 1 }} paddingBottom={"5vh"} marginTop={"2vh"}>
           <Grid container justifyContent={"center"} spacing={3} >
             <Grid item xs={12} md={8}>
               <Item>

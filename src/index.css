@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e8f6f6;
+  background-color: #FAFAFF;
 }
 
 code {
@@ -16,8 +16,8 @@ code {
   scroll-behavior: smooth;
 }
 .navbar{
-  background-color: #abecec;
-  box-shadow: 0px 8px 8px rgb(0 0 0 / 0.25),0px -2px 8px rgb(0 0 0 / 0.25);
+  background-color: #EEF0F2;
+  box-shadow: 0px 2px 2px rgb(0 0 0 / 0.25);
 }
 
 .space{
@@ -97,7 +97,7 @@ code {
 
 .login-box{
   display: flex;
-  margin-top: 5vh;
+  margin-top: 15vh;
   justify-content: center;
   align-items: center;
   margin-left: auto;
@@ -107,7 +107,7 @@ code {
   width:60vw;
   color: black;
   border-radius: 3vw;
-  background-color: #abecec;
+  background-color: #EEF0F2;
 }
 
 .row-login{
@@ -118,7 +118,7 @@ code {
 }
 
 .toggle-btn{
-  background-color: #abecec;
+  background-color: #EEF0F2;
   color: black;
 }
 
@@ -132,15 +132,15 @@ code {
   width: 15vw;
   /* height: 2.6vw; */
   margin-top: 2vw;
-  background-color: #abecec;
+  background-color: #EEF0F2;
   color: #FFF4DD;
-  border: #78e8e8;
+  border: #197278;
   font-size: 9px;
   /* height: 2vw; */
 }
 
 .container-faq{
-  background-color: #abecec;
+  background-color: #EEF0F2;
   padding:2vw;
   margin-top: 5vh;
   border-radius: 5vh;
@@ -148,12 +148,16 @@ code {
 
 
 .policy{
-  background-color: #4bcece;
+  background-color: #478e93;
   margin-top:1vw;
   padding:1vw;
   display: flex;
   height:10vh;
   border-radius: 3vh;
+}
+
+.policy:hover{
+  cursor: pointer;
 }
 
 .faq-question{
@@ -185,16 +189,28 @@ code {
 
 .MuiAccordion-root{
   justify-content: center;
-  background-color: #78e8e8;
+  background-color: #197278;
   color: white;
   margin-top: 1vw;
   width: 35vw;
 }
 
 .MuiDialog-root{
-  color: #78e8e8;
+  color: #197278;
 }
 
 .navItem{
   width:"10vw";
+}
+
+.noticeItem:hover{
+  cursor: pointer;
+}
+
+.dropzone:hover{
+  cursor: pointer;
+}
+
+.close-button:hover{
+  cursor: pointer;
 }
