@@ -11,6 +11,7 @@ function LandingPage() {
       <div className="home">
       <NewsCarousel />
       <Visualize/>
+      <Map/>
       </div>
     </>
   );

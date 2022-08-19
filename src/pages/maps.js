@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import KeplerGl from "kepler.gl";
 import { addDataToMap } from "kepler.gl/actions";
 import useSwr from "swr";
@@ -13,7 +13,6 @@ export default function App() {
 }
 
 function Map() {
-  const dispatch = useDispatch();
   const { data } = useSwr("covid", async () => {
     const response = await fetch(
       "https://gist.githubusercontent.com/leighhalliday/a994915d8050e90d413515e97babd3b3/raw/a3eaaadcc784168e3845a98931780bd60afb362f/covid19.json"
@@ -24,7 +23,6 @@ function Map() {
 
   React.useEffect(() => {
     if (data) {
-      dispatch(
         addDataToMap({
           datasets: {
             info: {
@@ -39,9 +37,8 @@ function Map() {
           },
           config: {},
         })
-      );
     }
-  }, [dispatch, data]);
+  }, [data]);
 
   return (
     <KeplerGl
