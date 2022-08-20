@@ -11,25 +11,28 @@ import DeveloperDashboard from "./pages/dev_dashboard";
 import GovernmentDashboard from "./pages/govt_dashboard";
 import Map from "./pages/kepler/maps";
 import Footer from './pages/footer';
+import { AuthContextProvider } from "./context/AuthContext";
+
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/faq" element={<FaqsAndPolicies />} />
-          <Route path="/report" element={<ReportSuggest />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/dev-dashboard" element={<DeveloperDashboard />} />
-          <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
-          <Route path="/map" element={<Map/>}/>
-        </Routes>
-        
-      </Router>
+      <AuthContextProvider>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/faq" element={<FaqsAndPolicies />} />
+            <Route path="/report" element={<ReportSuggest />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/dev-dashboard" element={<DeveloperDashboard />} />
+            <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
+            <Route path="/map" element={<Map />} />
+          </Routes>
+        </Router>
+      </AuthContextProvider>
     </div>
   );
 }
