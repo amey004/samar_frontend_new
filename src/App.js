@@ -28,6 +28,7 @@ function App() {
           <Route path="/report" element={<ReportSuggest />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/detailed-report" element={<ViewReport/>}/>
+          {/* <Route path="/govt-dashboard" element={<GovernmentDashboard />} /> */}
           {loggedIn && role === "developer" ? (
             <Route path="/dev-dashboard" element={<DeveloperDashboard />} />
           ) : (

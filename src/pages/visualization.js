@@ -31,13 +31,13 @@ function Visualize(){
           <Grid container justifyContent={"center"} spacing={3}>
             <Grid item xs={12} md={8}>
               <Item>
-                <h4>Wardwise Slum Households</h4>
+                <h6>Wardwise Slum Households</h6>
                 <Household />
               </Item>
             </Grid>
             <Grid item xs={12} md={3}>
               <Item>
-                <h4>Slum Status</h4>
+                <h6>Slum Status</h6>
                 <div
                   style={{
                     marginTop: "17%",
@@ -49,13 +49,13 @@ function Visualize(){
             </Grid>
             <Grid item xs={12} md={4}>
               <Item>
-                <h4>Wardwise Slum Count</h4>
+                <h6>Wardwise Slum Count</h6>
                 <Wardcount />
               </Item>
             </Grid>
             <Grid item xs={12} md={7}>
               <Item>
-                <h4>Tenability</h4>
+                <h6>Tenability</h6>
                 <div style={{ height: "50%" }}>
                   <Tenability />
                 </div>

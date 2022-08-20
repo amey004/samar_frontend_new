@@ -87,7 +87,7 @@ function NavBar (){
                 </NavItem>
               )}
 
-              <NavItem style={{}}>
+              <NavItem style={{width:"11.28vw"}}>
                 <NavLink
                   className="nav-link"
                   exact
