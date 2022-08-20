@@ -11,12 +11,14 @@ function AuthContextProvider(props) {
 
   async function getLoggedIn() {
     const loggedInres = await axios.get("http://localhost:5000/user/loggedIn");
+    const category = await axios.get("http://localhost:5000/user/role");
+    setrole(category.data.role);
     setloggedIn(loggedInres.data);
   }
 
   useEffect(() => {
-    getLoggedIn();
-  }, []);
+
+  }, [loggedIn,role]);
 
   return (
     <AuthContext.Provider value={{ loggedIn, getLoggedIn,setrole,role }}>

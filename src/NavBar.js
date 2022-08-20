@@ -6,7 +6,6 @@ import {
   NavItem,
   Collapse,
   NavbarBrand,
-  Alert
 } from "reactstrap";
 import { NavLink} from "react-router-dom";
 import logo from "./images/samar_logo.png";
@@ -16,7 +15,8 @@ import axios from 'axios';
 
 function NavBar (){
   const[isNavOpen,setisNavOpen] = useState(false);
-  const {loggedIn,getLoggedIn} = useContext(AuthContext);
+  const[url,seturl] = useState("/");
+  const {loggedIn,getLoggedIn,role} = useContext(AuthContext);
   const toggleNav = () => {
       setisNavOpen(!isNavOpen)
   }
@@ -25,7 +25,13 @@ function NavBar (){
     await axios.get("http://localhost:5000/user/logout");
     await getLoggedIn();
   }
-
+  useEffect(()=>{
+    if(role==='developer'){
+      seturl("/dev-dashboard")
+    }else if(role==='authority'){
+      seturl("/govt-dashboard")
+    }
+  },[url,role])
     return (
       <div style={{ display: "flex" }}>
         <Navbar expand="md" style={{ width: "100%" }} fixed="top">
@@ -65,7 +71,22 @@ function NavBar (){
                   <h5>Home</h5>
                 </NavLink>
               </NavItem>
-              <NavItem style={{ width: "8.4vw" }}>
+              {loggedIn && (
+                <NavItem style={{ width: "8.4vw" }}>
+                  <NavLink
+                    className="nav-link"
+                    exact
+                    to={url}
+                    activeStyle={{
+                      color: "black",
+                    }}
+                  >
+                    <h5>Dashboard</h5>
+                  </NavLink>
+                </NavItem>
+              )}
+
+              <NavItem style={{}}>
                 <NavLink
                   className="nav-link"
                   exact

@@ -5,13 +5,15 @@ import {
   Button,
 } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import login from "../lottieFiles/register.json";
 import Lottie from "react-lottie";
 import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {Alert} from "reactstrap"
+import AuthContext from "../context/AuthContext";
+
 axios.defaults.withCredentials = true;
 function Login() {
   const [category, setcategory] = useState("developer");
@@ -30,18 +32,28 @@ function Login() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const {role,getLoggedIn,loggedIn,setrole} = useContext(AuthContext);
+
+  useEffect(()=>{
+
+  },[loggedIn,role])
 
   const sendData = async (e) => {
     try {
       console.log(email, password, category);
       console.log(process.env.REACT_APP_SERVER_URL);
-      const data = await axios.post("http://localhost:5000/user/signin", {
+      await axios.post("http://localhost:5000/user/signin", {
         email,
         password,
         category,
       });
-      console.log(data.data);
-      navigate("/");
+      await getLoggedIn();
+      if(category==='developer'){
+        navigate("/dev-dashboard");
+      }else if(category==='authority'){
+        navigate("/govt-dashboard");
+      }
+      
     } catch (error) {
       setstatus(error.response.status);
       seterror(error.response.data.error);
@@ -49,7 +61,7 @@ function Login() {
       console.log(error.response.data);
     }
   };
-  const validation = () => {};
+
   useEffect(() => {}, [category, status,error]);
 
   return (
@@ -93,15 +105,15 @@ function Login() {
           </ToggleButton>
           <ToggleButton
             style={{
-              backgroundColor: category === "govt" ? "#478e93" : "#EEF0F2",
+              backgroundColor: category === "authority" ? "#478e93" : "#EEF0F2",
               textTransform: "capitalize",
-              color: category === "govt" ? "#FFFFFF" : "#000000",
+              color: category === "authority" ? "#FFFFFF" : "#000000",
               borderRadius: "1.3vw",
               borderColor: category === "govt" ? "#478e93" : "#EEF0F2",
               fontSize: "x-small",
             }}
-            value="govt"
-            onClick={() => setcategory("govt")}
+            value="authority"
+            onClick={() => setcategory("authority")}
           >
             Government Authority
           </ToggleButton>
@@ -113,6 +125,7 @@ function Login() {
             type="email"
             value={email}
             onChange={(e) => {
+              setstatus(200);
               setemail(e.target.value);
             }}
             InputProps={{
@@ -132,6 +145,7 @@ function Login() {
             type="password"
             value={password}
             onChange={(e) => {
+              setstatus(200);
               setpassword(e.target.value);
             }}
             InputProps={{
@@ -146,7 +160,7 @@ function Login() {
         </div>
         {status !== 200 && (
           <>
-            <div className="mt-2" style={{width:"95%"}}>
+            <div className="mt-2" style={{ width: "95%" }}>
               <Alert color="danger">{error}</Alert>
             </div>
           </>

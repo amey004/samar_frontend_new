@@ -14,7 +14,7 @@ function LandingPage() {
     }
     getStatus();
     console.log(loggedIn);
-  },[loggedIn,getLoggedIn])
+  },[loggedIn])
   return (
     <>
       <div className="home">

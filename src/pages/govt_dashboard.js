@@ -1,11 +1,13 @@
-import React from 'react';
+import React,{useEffect,useContext} from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
 import { Grid } from '@material-ui/core';
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
-
+import AuthContext from '../context/AuthContext';
 function GovernmentDashboard(){
+    const {role} = useContext(AuthContext)
+    console.log(role)
     var currentProjects = [
         {projectId:1,projectName:'Dhankawadi Towers',image:slum},
         {projectId:2,projectName:'Sahakarnagar Heights',image:slum},
