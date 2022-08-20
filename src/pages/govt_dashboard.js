@@ -3,6 +3,7 @@ import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
 import { Grid } from '@material-ui/core';
 import Notices from '../components/noticesCard';
+import FileUpload from '../components/fileUpload';
 
 function GovernmentDashboard(){
     var currentProjects = [
@@ -53,7 +54,7 @@ function GovernmentDashboard(){
     ];
 
     return (
-        <div >
+        <div style={{marginTop:"12vh"}}>
             <Grid container justifyContent={"space-evenly"}>
                 <Grid item xs={5}>
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>
@@ -68,6 +69,8 @@ function GovernmentDashboard(){
                     <Notices notices={noticesList}/>
                 </Grid>
             </Grid>
+            <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"4vw", marginBottom:"1vh",}}>Add More Data</div>
+            <FileUpload/>
         </div>
     );
 }

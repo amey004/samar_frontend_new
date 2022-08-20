@@ -9,7 +9,7 @@ function LeftArrow() {
     return (
       <div disabled={isFirstItemVisible} onClick={() => scrollPrev()} style={{alignSelf:"center"}}>
        <HiArrowLeft style={{
-            color:"white",
+            color:"#125054",
         }}/>
       </div>
     );
@@ -21,7 +21,7 @@ function RightArrow() {
     return (
       <div disabled={isLastItemVisible} onClick={() => scrollNext()} style={{alignSelf:"center"}}>
         <HiArrowRight style={{
-            color:"white",
+            color:"#125054",
         }}/>
       </div>
     );
@@ -33,7 +33,7 @@ function CarouselCard(props){
     return (
         <div style={{
             margin:"2vh",
-            backgroundColor:"#4bcece",
+            backgroundColor:"#d1e3e4",
             borderRadius:"10px",
             padding:"5px",
             overflow:"hidden"

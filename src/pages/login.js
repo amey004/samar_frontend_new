@@ -22,22 +22,32 @@ function Login(){
 
      useEffect(() => {
         handleLogin()
-     },[usertype]);
+     },[usertype,page]);
 
     function handleLogin(){
-        console.log(usertype);
-        if(usertype === 'developer'){
-            setPage('/dev-dashboard');
-        }
-        else if(usertype === 'govt'){
-            setPage('/govt-dashboard');
-        }
-        else if(usertype==='inhabitant'){
-            setPage('/error');
+        const emailId = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        console.log(emailId);
+        console.log(password);
+        if(emailId === '' || password === ''){
+            setPage("/error");
         }
         else{
-            setPage('/error');
+            console.log(usertype);
+            if(usertype === 'developer'){
+                console.log("developer hi hai");
+                setPage('/dev-dashboard');
+                console.log(page);
+            }
+            else if(usertype === 'govt'){
+                setPage('/govt-dashboard');
+            }
+            else{
+                console.log("befaltu ka error");
+                setPage('/error');
+            }
         }
+        
      }
 
    
@@ -52,7 +62,7 @@ function Login(){
                 LOGIN
                 </div>
                 <ToggleButtonGroup size="small" style={{
-                    backgroundColor:'#abecec',
+                    backgroundColor:'#EEF0F2',
                     padding:"5px",
                     borderRadius: "1.3vw",
                     borderColor:'#000000',
@@ -60,43 +70,33 @@ function Login(){
                     marginTop:"1vw",
                 }}exclusive value={usertype}>
                     <ToggleButton style={{
-                        backgroundColor:usertype==='developer'? '#78e8e8':'#abecec',
-                        color:'black',
+                        backgroundColor:usertype==='developer'? '#478e93':'#EEF0F2',
+                        color:usertype==='developer'? '#FFFFFF':'#000000',
                         textTransform: 'capitalize',
                         borderRadius: "1.3vw",
-                        borderColor:usertype==='developer'? '#78e8e8':'#abecec',
+                        borderColor:usertype==='developer'? '#478e93':'#EEF0F2',
                         fontSize: 'x-small',
                     }} value='developer' onClick={() => setUsertype('developer')}>
                     Developer
                     </ToggleButton>
                     <ToggleButton style={{
-                        backgroundColor:usertype==='inhabitant'? '#78e8e8':'#abecec',
+                        backgroundColor:usertype==='govt'? '#478e93':'#EEF0F2',
                         textTransform: 'capitalize',
-                        color:'black',
+                        color:usertype==='govt'? '#FFFFFF':'#000000',
                         borderRadius: "1.3vw",
-                        borderColor:usertype==='inhabitant'?"78e8e8":'#abecec',
-                        fontSize: 'x-small',
-                        }} value='inhabitant' onClick={() => setUsertype('inhabitant')}>
-                    Slum Inhabitant
-                    </ToggleButton>
-                    <ToggleButton style={{
-                        backgroundColor:usertype==='govt'? '#78e8e8':'#abecec',
-                        textTransform: 'capitalize',
-                        color:'black',
-                        borderRadius: "1.3vw",
-                        borderColor:usertype==='govt'? '#78e8e8':'#abecec',
+                        borderColor:usertype==='govt'? '#478e93':'#EEF0F2',
                         fontSize: 'x-small',
                         }} value='govt' onClick={() => setUsertype('govt')}>
                     Government Authority
                     </ToggleButton>
                 </ToggleButtonGroup>
                 <div className="textfield">
-                    <TextField id='outlined-basic' label='Enter Email Id'  type="email" InputProps={{
+                    <TextField id='email' label='Enter Email Id'  type="email" InputProps={{
                             startAdornment: <InputAdornment position="start"><HiOutlineMail/></InputAdornment>,
-                            }} size='small'></TextField>
+                            }} size='small' ></TextField>
                 </div>
                 <div className="textfield"> 
-                    <TextField id='outlined-basic'  label="Password" type="password" InputProps={{
+                    <TextField id='password'  label="Password" type="password" InputProps={{
                             
                             startAdornment: <InputAdornment position="start"><HiLockClosed/></InputAdornment>,
                             }} size='small'></TextField>
@@ -105,8 +105,8 @@ function Login(){
                     <Button variant='contained' style={{
                         borderRadius: "1.3vw",
                         borderColor:"black",
-                        backgroundColor: "#78e8e8",
-                        color:"black",
+                        backgroundColor: "#197278",
+                        color:"#FFFFFF",
                         margin:"2vw",
                         marginBottom:"1vw",
                         marginLeft:"5vw",

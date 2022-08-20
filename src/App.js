@@ -10,6 +10,7 @@ import ReportSuggest from "./pages/report_suggest";
 import DeveloperDashboard from "./pages/dev_dashboard";
 import GovernmentDashboard from "./pages/govt_dashboard";
 import Map from "./pages/kepler/maps";
+import Footer from './pages/footer';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
           <Route path="/map" element={<Map/>}/>
         </Routes>
+        
       </Router>
     </div>
   );

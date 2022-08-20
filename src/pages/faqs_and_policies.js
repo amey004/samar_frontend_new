@@ -4,7 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import { HiPlus } from "react-icons/hi";
+import { HiPlus, HiX } from "react-icons/hi";
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -18,7 +18,7 @@ function FaqsAndPolicies(){
         ministry:"Ministry of Housing and Urban Affairs", 
         details:"The Mission addresses urban housing shortage among the EWS/LIG and MIG categories including the slum dwellers by ensuring a pucca house to all eligible urban households by the year 2022, when Nation completes 75 years of its Independence.",
         image:goi,
-    launchDate:"25 June 2015"},
+        launchDate:"25 June 2015"},
         {policyNumber:2,
             policyName:"Pradhan Mantri Aawas Yojana",
             details:"The Mission addresses urban housing shortage among the EWS/LIG and MIG categories including the slum dwellers by ensuring a pucca house to all eligible urban households by the year 2022, when Nation completes 75 years of its Independence.", 
@@ -65,7 +65,7 @@ function FaqsAndPolicies(){
     ];
 
     return (
-            <Grid container spacing={2} padding={"2vh"}>
+            <Grid container spacing={2} padding={"2vh"} marginTop={"12vh"}>
                 <Grid item padding={"2vh"} xs={6} marginLeft={"3vw"}>
                     <Box className="container-faq">
                         <div style={{
@@ -82,6 +82,7 @@ function FaqsAndPolicies(){
                         <div style={{
                                 fontWeight:500,
                                 color:"#000000",
+                                marginBottom:"1vh",
                             }}>Frequently Asked Questions</div>
                             {questions.map((e) => {
                                 return (<FaqQuestion heading={e.heading} details={e.details}/>)
@@ -96,7 +97,7 @@ function FaqsAndPolicies(){
 function FaqQuestion(faqQn) {  
     return (
       <div >
-        <Accordion>
+        <Accordion disableGutters={true}>
           <AccordionSummary
              expandIcon={<HiPlus/>}
             //  aria-controls="panel1a-content"
@@ -142,16 +143,19 @@ function PolicyDetails(pol){
             <Box className="policy" onClick={handleClickOpen("paper")}>
                 <Avatar src={pol.image} style={{
                     marginRight:"1vw",
+                    backgroundColor:"white",
+                    padding:"5px",
+                    objectFit:"contain",
                 }}/>
                 <div>
-                    <div className="black-heading">{pol.policyName}</div>
-                    <div className="black-subheading">{pol.ministry}</div>
+                    <div className="white-heading">{pol.policyName}</div>
+                    <div className="white-subheading">{pol.ministry}</div>
                 </div>
                 
             </Box>
             <Dialog
                 style={{
-                    color:"#abecec"
+                    color:"#EEF0F2"
                 }}
                 open={open}
                 onClose={handleClose}
@@ -167,6 +171,12 @@ function PolicyDetails(pol){
                         <div className="black-heading">{pol.policyName}</div>
                         <div className="black-subheading">{pol.ministry}</div>
                     </div>
+                    <div className="close-button" style={{
+                        position:"absolute",
+                        right:"1vw",
+                        top:"1vh",
+                        color:"#4E4E4E"
+                    }} onClick={handleClose}><HiX/></div>
                 </DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
                     <DialogContentText

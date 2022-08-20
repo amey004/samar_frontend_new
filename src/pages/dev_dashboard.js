@@ -55,7 +55,7 @@ function DeveloperDashboard(){
     ];
 
     return (
-        <div>
+        <div style={{marginTop:"12vh"}}>
             <Grid container justifyContent={"space-evenly"}>
                 <Grid item xs={5}>
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>

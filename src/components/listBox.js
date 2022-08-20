@@ -13,9 +13,9 @@ function ProjectListItem(props){
             marginRight:"auto",
             width:"30vw",
             padding:"-10px",
-            backgroundColor:"#abecec",
+            backgroundColor:"#EEF0F2",
         }}>
-            <AccordionSummary style={{height:"5vh", backgroundColor:"#abecec"}} expandIcon={<HiChevronDown/>}>
+            <AccordionSummary style={{height:"5vh", backgroundColor:"#EEF0F2"}} expandIcon={<HiChevronDown/>}>
                 {projectDetails.projectName}
             </AccordionSummary>
             <AccordionDetails>
@@ -37,7 +37,7 @@ function ListBox(props){
     console.table(props.projectsList);
     return (
         <div style={{
-            backgroundColor:"#4bcece",
+            backgroundColor:"#478e93",
             height:"75vh",
             borderRadius:"15px",
             marginLeft:"5vw",
