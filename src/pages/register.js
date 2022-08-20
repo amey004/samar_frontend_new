@@ -1,14 +1,22 @@
 import {TextField, Button, Select, MenuItem, Grid} from "@mui/material";
 import InputAdornment from '@mui/material/InputAdornment';
-import React, { useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import login from '../lottieFiles/register.json';
 import Lottie from "react-lottie";
 import { HiOutlineMail, HiLockClosed, HiViewGrid , HiUserCircle} from "react-icons/hi";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import AuthContext from "../context/AuthContext";
+// require('dotenv').config();
 
 function Register(){
-    const [usertype, setUsertype] = useState('developer');
-    
+    const [category, setcategory] = useState('authority');
+    const [username,setusername] = useState('');
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+    const [verifypassword, setverifypassword] = useState("");
+    const navigate = useNavigate();
+    const {role,setrole,loggedIn} = useContext(AuthContext);
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -19,8 +27,28 @@ function Register(){
            preserveAspectRatio: "xMidYMid slice",
         },
      };
+     
 
-   
+    const sendData = async (e) => {
+      try {
+        console.log(username, email, password, category);
+        console.log(process.env.REACT_APP_SERVER_URL);
+        await axios.post("http://localhost:5000/user/signup", {
+          username,
+          email,
+          password,
+          category,
+        });
+        navigate("/");
+      } catch (error) {
+        console.log(error.response.data)
+      }
+
+     }
+     useEffect(() => {
+        console.log(role);
+        console.log(loggedIn);
+     },[loggedIn,setrole,role])
     return (
       <div className="login-box">
         <Grid container>
@@ -37,6 +65,10 @@ function Register(){
               <TextField
                 id="outlined-basic"
                 label="Enter Name"
+                value={username}
+                onChange={(e) => {
+                  setusername(e.target.value);
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -52,6 +84,10 @@ function Register(){
                 id="outlined-basic"
                 label="Enter Email Id"
                 type="email"
+                value={email}
+                onChange={(e) => {
+                  setemail(e.target.value);
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -67,6 +103,10 @@ function Register(){
                 id="outlined-basic"
                 label="Enter Password"
                 type="password"
+                value={password}
+                onChange={(e) => {
+                  setpassword(e.target.value);
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -82,6 +122,10 @@ function Register(){
                 id="outlined-basic"
                 label="Confirm Password"
                 type="password"
+                value={verifypassword}
+                onChange={(e) => {
+                  setverifypassword(e.target.value);
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -110,7 +154,7 @@ function Register(){
                     </InputAdornment>
                   ),
                 }}
-                value={usertype}
+                value={category}
                 defaultValue="Select User Type"
               >
                 <MenuItem
@@ -123,12 +167,15 @@ function Register(){
                     margin: "-8px",
                     height: "2.5vw",
                   }}
-                  onClick={() => setUsertype("developer")}
+                  onClick={() => {
+                    setcategory("developer")
+                    setrole('developer')
+                  }}
                 >
                   Developer
                 </MenuItem>
                 <MenuItem
-                  value="inhabitant"
+                  value="authority"
                   style={{
                     // marginBottom:"1vw",
                     fontSize: "14px",
@@ -137,21 +184,10 @@ function Register(){
                     margin: "-8px",
                     height: "2.5vw",
                   }}
-                  onClick={() => setUsertype("inhabitant")}
-                >
-                  Slum Inhabitant
-                </MenuItem>
-                <MenuItem
-                  value="govt"
-                  style={{
-                    // marginBottom:"1vw",
-                    fontSize: "14px",
-                    // marginLeft:"1.2vw",
-                    backgroundColor: "#78e8e8",
-                    margin: "-8px",
-                    height: "2.5vw",
-                  }}
-                  onClick={() => setUsertype("govt")}
+                  onClick={() => {
+                    setcategory("authority")
+                    setrole('authority');
+                }}
                 >
                   Government Authority
                 </MenuItem>
@@ -169,6 +205,7 @@ function Register(){
                   marginLeft: "3vw",
                   fontSize: "small",
                 }}
+                onClick={sendData}
               >
                 Register
               </Button>

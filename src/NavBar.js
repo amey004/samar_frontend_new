@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {
   Navbar,
   Nav,
@@ -9,28 +9,34 @@ import {
 } from "reactstrap";
 import { NavLink} from "react-router-dom";
 import logo from "./images/samar_logo.png";
-import {Container} from "@material-ui/core"
+import AuthContext from './context/AuthContext';
+import axios from 'axios';
 
 
-class navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isNavOpen: false,
-    };
-    this.toggleNav = this.toggleNav.bind(this);
+function NavBar (){
+  const[isNavOpen,setisNavOpen] = useState(false);
+  const[url,seturl] = useState("/");
+  const {loggedIn,getLoggedIn,role} = useContext(AuthContext);
+  const toggleNav = () => {
+      setisNavOpen(!isNavOpen)
   }
-  toggleNav() {
-    this.setState({
-      isNavOpen: !this.state.isNavOpen,
-    });
+  const logout = async () => {
+    console.log("logging out");
+    await axios.get("http://localhost:5000/user/logout");
+    await getLoggedIn();
   }
-  render() {
+  useEffect(()=>{
+    if(role==='developer'){
+      seturl("/dev-dashboard")
+    }else if(role==='authority'){
+      seturl("/govt-dashboard")
+    }
+  },[url,role])
     return (
       <div style={{ display: "flex" }}>
         <Navbar expand="md" style={{ width: "100%" }} fixed="top">
-          <NavbarToggler className="mr-2" onClick={this.toggleNav} />
-          <NavbarBrand className="" href="/" style={{ width:"100%" }}>
+          <NavbarToggler className="mr-2" onClick={toggleNav} />
+          <NavbarBrand className="" href="/" style={{ width: "100%" }}>
             <div style={{ display: "inline" }}>
               <img
                 src={logo}
@@ -51,10 +57,8 @@ class navbar extends Component {
               </p>
             </div>
           </NavbarBrand>
-          <Collapse isOpen={this.state.isNavOpen} navbar>
-            <Nav classname="container-fluid justify-content-end" navbar  style={{
-                    fontSize:"12px"
-                  }}>
+          <Collapse isOpen={isNavOpen} navbar>
+            <Nav classname="container-fluid justify-content-end" navbar>
               <NavItem>
                 <NavLink
                   className="nav-link"
@@ -68,7 +72,22 @@ class navbar extends Component {
                   <h5>Home</h5>
                 </NavLink>
               </NavItem>
-              <NavItem style={{width:"10.46vw"}}>
+              {loggedIn && (
+                <NavItem style={{ width: "8.4vw" }}>
+                  <NavLink
+                    className="nav-link"
+                    exact
+                    to={url}
+                    activeStyle={{
+                      color: "black",
+                    }}
+                  >
+                    <h5>Dashboard</h5>
+                  </NavLink>
+                </NavItem>
+              )}
+
+              <NavItem style={{}}>
                 <NavLink
                   className="nav-link"
                   exact
@@ -92,22 +111,38 @@ class navbar extends Component {
                   <h5>Report/Suggest</h5>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  className="nav-link"
-                  exact
-                  to="/login"
-                  style={{ textDecoration: "none" }}
-                >
-                  <h5>Login</h5>
-                </NavLink>
-              </NavItem>
+              {loggedIn ? (
+                <NavItem>
+                  <NavLink
+                    to="/login"
+                    className="nav-link"
+                    NavLink
+                    onClick={() => {
+                      console.log("clicked!");
+                      logout();
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <h5>Logout</h5>
+                  </NavLink>
+                </NavItem>
+              ) : (
+                <NavItem>
+                  <NavLink
+                    className="nav-link"
+                    exact
+                    to="/login"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <h5>Login</h5>
+                  </NavLink>
+                </NavItem>
+              )}
             </Nav>
           </Collapse>
         </Navbar>
       </div>
     );
   }
-}
 
-export default navbar;
+export default NavBar;

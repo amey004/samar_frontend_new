@@ -6,6 +6,7 @@ import "./index.css";
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux"
 import store from './pages/kepler/store'
+import { AuthContextProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,9 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <AuthContextProvider>
         <App />
-    </Provider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
