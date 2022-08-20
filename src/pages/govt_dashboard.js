@@ -1,9 +1,10 @@
 import React from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid } from '@material-ui/core';
+import { Grid, Button, Box } from '@material-ui/core';
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
+import Visualize from "./visualization.js";
 
 function GovernmentDashboard(){
     var currentProjects = [
@@ -55,7 +56,21 @@ function GovernmentDashboard(){
 
     return (
         <div style={{marginTop:"12vh"}}>
-            <Grid container justifyContent={"space-evenly"}>
+            
+            <Grid container justifyContent={"space-evenly"} verticalAlign={"center"} alignItems={"center"}>
+                <Grid item xs = {11}>
+                <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"4vw", marginBottom:"1vh"}}>Statistics</div>
+                <Visualize/>
+                </Grid>
+                <Grid item xs={12} >
+                    <Button style={{
+                        backgroundColor:"#197278",
+                        color:"#FFFFFF",
+                        marginTop:"auto",
+                        marginLeft:"80vw",
+                        marginBottom:"2vh"
+                    }}>View Detailed Report</Button>
+                </Grid>
                 <Grid item xs={5}>
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>
                     <CarouselCard projectDetails={currentProjects}/>
@@ -68,9 +83,12 @@ function GovernmentDashboard(){
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Notices</div>
                     <Notices notices={noticesList}/>
                 </Grid>
+                <Grid item xs={11}>
+                    <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"4vw", marginBottom:"1vh",}}>Add More Data</div>
+                    <FileUpload/>
+                </Grid>
             </Grid>
-            <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"4vw", marginBottom:"1vh",}}>Add More Data</div>
-            <FileUpload/>
+            
         </div>
     );
 }

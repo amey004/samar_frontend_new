@@ -44,7 +44,7 @@ class navbar extends Component {
                 style={{
                   display: "inline-block",
                   marginLeft: "1vw",
-                  fontSize: "20px",
+                  fontSize: "18px",
                 }}
               >
                 Slum Administration, Management and Rehabilitation
@@ -52,7 +52,9 @@ class navbar extends Component {
             </div>
           </NavbarBrand>
           <Collapse isOpen={this.state.isNavOpen} navbar>
-            <Nav classname="container-fluid justify-content-end" navbar>
+            <Nav classname="container-fluid justify-content-end" navbar  style={{
+                    fontSize:"12px"
+                  }}>
               <NavItem>
                 <NavLink
                   className="nav-link"
@@ -61,11 +63,12 @@ class navbar extends Component {
                   activeStyle={{
                     color: "black",
                   }}
+                 
                 >
                   <h5>Home</h5>
                 </NavLink>
               </NavItem>
-              <NavItem style={{width:"8.4vw"}}>
+              <NavItem style={{width:"10.46vw"}}>
                 <NavLink
                   className="nav-link"
                   exact

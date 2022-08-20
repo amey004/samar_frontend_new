@@ -2,9 +2,8 @@ import React from "react";
 import { Avatar,Grid,Box, Card, Button, ButtonGroup , ButtonBase} from '@material-ui/core';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import { HiX } from "react-icons/hi";
 function NoticeItem(props){
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
@@ -35,13 +34,15 @@ function NoticeItem(props){
                 width:"15vw",
                 margin:"5px",
                 paddingLeft:"10px",
+                
             }}
             onClick={handleClickOpen("paper")}>
-                <h6>{props.notice.recipient}</h6>
+                <div style={{fontSize:"15px", fontWeight:"500"}}>{props.notice.recipient}</div>
                 <p style={{ whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    marginRight:"12px"}}>
+                    maxLines:"2",
+                    marginRight:"12px",fontSize:"12px"}}>
                 {props.notice.subject}</p>
             </Card>
             <Dialog style={{
@@ -59,7 +60,8 @@ function NoticeItem(props){
                 <DialogTitle style={{display:"flex"}}>
                     <div style={{
                         backgroundColor:"#478e93",
-                        fontFamily:"Barlow Condensed"
+                        // fontFamily:"Poppins",
+                        color:"white",
                     }}>
                         <Grid container spacing={2}>
                             <Grid item>
@@ -76,7 +78,8 @@ function NoticeItem(props){
                                 {props.notice.recipient}
                                 </p>
                                 <p style={{
-                                    fontSize:"small",
+                                    fontSize:"10px",
+                                    fontColor:"#e8f1f2"
                                 }}>
                                     <b>Address: </b>{props.notice.address}
                                     <br></br>
@@ -84,13 +87,23 @@ function NoticeItem(props){
                                 </p>
                                 </Grid>
                             </Grid>
+                            <Grid>
+                                <div className="close-button" style={{
+                                position:"absolute",
+                                right:"1vw",
+                                top:"1vh",
+                                color:"#FFFFFF"
+                            }} onClick={handleClose}><HiX/></div>
+                            </Grid>
                             </Grid>
                         </Grid>
                     </div>
                 </DialogTitle>
                 <DialogContent dividers>
                     <div style={{
-                        backgroundColor:"#478e93"
+                        backgroundColor:"#478e93",
+                        color:"#FFFFFF",
+                        fontSize:"14px",
                     }}>
                         <div style={{fontWeight:"500", paddingBottom:"-10px"}}>Notice Regarding:</div>
                         {props.notice.subject}
@@ -110,14 +123,14 @@ function NoticeItem(props){
                            textTransform:"capitalize",
                            color:"black",
                            margin:"2vh",
-                           fontFamily:"Barlow Condensed"
+                           fontFamily:"Poppins"
                         }}>Notice Sent</Button>
                         <Button variant="outlined" style={{
                             backgroundColor: "#EEF0F2",
                             textTransform:"capitalize",
                             color:"black",
                             margin:"2vh",
-                            fontFamily:"Barlow Condensed"
+                            fontFamily:"Poppins"
                         }}>Remove from Blacklist</Button>
                     </div>
                 </DialogContent>

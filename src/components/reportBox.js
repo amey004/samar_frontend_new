@@ -24,23 +24,26 @@ function ReportBox(){
     return (
         <Box style={{
             backgroundColor:"#EEF0F2",
-            height:"85vh",
+            height:"80vh",
             marginTop:"15vh",
             marginBottom:"2vh",
             borderRadius:"15px",
             marginLeft:"auto",
             marginRight:"auto",
-            width:"35vw",
+            width:"36vw",
             padding:"10px",
             paddingLeft:"2vw",
             paddingRight:"2vw",
+            position:"absolute",
+            top:"1vh",
+            left:"30%",
         }}>
-            <div>Saw any misconduct happening around you?</div>
-            <div>REPORT HERE</div>
+            <div style={{fontSize:"15px"}}>Saw any misconduct happening around you?</div>
+            <div style={{fontSize:"18px", fontWeight:"500", marginBottom:"0.5vh"}}>REPORT HERE</div>
             <div
             style={{
                 marginLeft:"1vh",
-                
+                fontSize:"14px",
             }}
             >Name</div>
             <TextField
@@ -55,7 +58,7 @@ function ReportBox(){
             <div
             style={{
                 marginLeft:"1vh",
-                
+                fontSize:"14px",
             }}
             >Email Address</div>
             <TextField
@@ -71,7 +74,7 @@ function ReportBox(){
                 <div
             style={{
                 marginLeft:"1vh",
-                
+                fontSize:"14px",
             }}
             >Project Name</div>
             <Select
@@ -92,7 +95,7 @@ function ReportBox(){
                 <div
             style={{
                 marginLeft:"1vh",
-                
+                fontSize:"14px",
             }}
             >Subject</div>
             <TextField
@@ -110,6 +113,7 @@ function ReportBox(){
             <div
             style={{
                 marginLeft:"1vh",
+                fontSize:"14px",
             }}
             >Explain in detail</div>
            <TextField
@@ -120,7 +124,8 @@ function ReportBox(){
                 variant='outlined'
                 style={{
                     marginTop:"1vh",
-                    marginLeft:"2vh",              
+                    marginLeft:"1vh",      
+                    width:"20vw"        
                 }}
                 />
                 <div>

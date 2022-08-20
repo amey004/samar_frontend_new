@@ -27,6 +27,7 @@ function App() {
           <Route path="/dev-dashboard" element={<DeveloperDashboard />} />
           <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
           <Route path="/map" element={<Map/>}/>
+          <Route path="/detailed-report" element={<ViewReport/>}/>
         </Routes>
         
       </Router>

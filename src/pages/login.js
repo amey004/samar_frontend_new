@@ -7,7 +7,7 @@ import { HiOutlineMail, HiLockClosed } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
 function Login(){
-    const [usertype, setUsertype] = useState('developer');
+    const [usertype, setUsertype] = useState('govt');
     const [page, setPage] = useState('/data');
     const defaultOptions = {
         loop: true,
@@ -70,6 +70,17 @@ function Login(){
                     marginTop:"1vw",
                 }}exclusive value={usertype}>
                     <ToggleButton style={{
+                        backgroundColor:usertype==='govt'? '#478e93':'#EEF0F2',
+                        textTransform: 'capitalize',
+                        color:usertype==='govt'? '#FFFFFF':'#000000',
+                        borderRadius: "1.3vw",
+                        borderColor:usertype==='govt'? '#478e93':'#EEF0F2',
+                        fontSize: 'x-small',
+                        marginRight:"2px",
+                        }} value='govt' onClick={() => setUsertype('govt')}>
+                    Government Authority
+                    </ToggleButton>
+                    <ToggleButton style={{
                         backgroundColor:usertype==='developer'? '#478e93':'#EEF0F2',
                         color:usertype==='developer'? '#FFFFFF':'#000000',
                         textTransform: 'capitalize',
@@ -78,16 +89,6 @@ function Login(){
                         fontSize: 'x-small',
                     }} value='developer' onClick={() => setUsertype('developer')}>
                     Developer
-                    </ToggleButton>
-                    <ToggleButton style={{
-                        backgroundColor:usertype==='govt'? '#478e93':'#EEF0F2',
-                        textTransform: 'capitalize',
-                        color:usertype==='govt'? '#FFFFFF':'#000000',
-                        borderRadius: "1.3vw",
-                        borderColor:usertype==='govt'? '#478e93':'#EEF0F2',
-                        fontSize: 'x-small',
-                        }} value='govt' onClick={() => setUsertype('govt')}>
-                    Government Authority
                     </ToggleButton>
                 </ToggleButtonGroup>
                 <div className="textfield">
@@ -120,20 +121,12 @@ function Login(){
                     textTransform: 'capitalize',
                     color:'black',
                     fontSize: '12px',
-                    marginLeft:"5vw",
+                    marginLeft:"4.5vw",
                     marginBottom:"0.5vw"
                     }}>
                 Forgot Password?
                 </div>
-                <Link style={{
-                    textTransform: 'capitalize',
-                    color:'black',
-                    fontSize: '12px',
-                    marginLeft:"2vw",
-                    marginBottom:"2vw"
-                    }} to="/register">
-                Don't have an account? Register here
-                </Link>
+                
             </div>
             <div classname='row-login'>
                 <Lottie options={defaultOptions} height={"20vw"} width={"25vw"} />

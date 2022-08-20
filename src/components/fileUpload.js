@@ -13,14 +13,15 @@ function Dropzone({ open }) {
     <div {...getRootProps({ className: "dropzone" })} style={{
         border:"1px dashed",
         marginBottom:"2vh",
-        height:"10vh",
+        height:"15vh",
         marginLeft:"4vw",
         marginRight:"4vw",
         alignContent:"center",
         justifyContent:"center",
+        padding:"1vh",
     }}>
       <input className="input-zone" {...getInputProps()} />
-      <div>
+      <div style={{fontSize:"14px"}}>
         {isDragActive ?
         <p>Drop the files here ...</p> :
           <p>Drag 'n' drop some files here, or click to select files</p>}
