@@ -1,0 +1,9 @@
+.boxes{
+    
+}
+
+@media only screen and (max-width: 600px) {
+  .boxes {
+    margin-top: 10% !important;
+  }
+}   

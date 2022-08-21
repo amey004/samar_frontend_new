@@ -2,6 +2,7 @@ import React from "react";
 import ProjectItem from "./projectItem";
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import {HiArrowLeft, HiArrowRight} from 'react-icons/hi';
+import "../index.css";
 function LeftArrow() {
     const { isFirstItemVisible, scrollPrev } =
       React.useContext(VisibilityContext);
@@ -34,6 +35,7 @@ function CarouselCard(props){
         <div style={{
             margin:"2vh",
             backgroundColor:"#d1e3e4",
+            width:"90%",
             borderRadius:"10px",
             padding:"5px",
             overflow:"hidden"
@@ -43,8 +45,8 @@ function CarouselCard(props){
             alignContent:"center",
             overflow:"scroll",
             }}>
-            {props.projectDetails.map((e) => (
-                <ProjectItem data = {e}/>
+            {props.projectDetails.map((e,key) => (
+                <ProjectItem data = {e} key={key} style={{}}/>
             ))}
             </ScrollMenu>
         </div>                

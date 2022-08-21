@@ -33,7 +33,7 @@ function NavBar (){
     }
   },[url,role])
     return (
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex"}} className="container">
         <Navbar expand="md" style={{ width: "100%" }} fixed="top">
           <NavbarToggler className="mr-2" onClick={toggleNav} />
           <NavbarBrand className="" href="/" style={{ width: "100%" }}>
@@ -72,7 +72,7 @@ function NavBar (){
                 </NavLink>
               </NavItem>
               {loggedIn && (
-                <NavItem style={{ width: "8.4vw" }}>
+                <NavItem>
                   <NavLink
                     className="nav-link"
                     exact

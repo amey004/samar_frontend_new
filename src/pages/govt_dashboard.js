@@ -56,24 +56,43 @@ function GovernmentDashboard(){
     ];
 
     return (
-        <div style={{marginTop:"12vh"}}>
-            <Grid container justifyContent={"space-evenly"}>
-                <Grid item xs={5}>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>
-                    <CarouselCard projectDetails={currentProjects}/>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Past Projects</div>
-                    <CarouselCard projectDetails={pastProjects}/>
-                </Grid>
-                <Grid item xs={5}>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Upcoming Projects</div>
-                    <CarouselCard projectDetails={upcomingProjects}/>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Notices</div>
-                    <Notices notices={noticesList}/>
-                </Grid>
-            </Grid>
-            <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"4vw", marginBottom:"1vh",}}>Add More Data</div>
-            <FileUpload/>
+      <div style={{ marginTop: "12vh" }}>
+        <Grid container justifyContent={"space-evenly"}>
+          <Grid item sm={5}>
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+              Current Projects
+            </div>
+            <CarouselCard projectDetails={currentProjects} />
+          </Grid>
+          <Grid item sm={5}>
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+              Past Projects
+            </div>
+            <CarouselCard projectDetails={pastProjects} />
+          </Grid>
+          <Grid item sm={5}>
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+              Upcoming Projects
+            </div>
+            <CarouselCard projectDetails={upcomingProjects} />
+          </Grid>
+          <Grid item sm={5}>
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>Notices</div>
+            <Notices notices={noticesList} />
+          </Grid>
+        </Grid>
+        <div
+          style={{
+            fontWeight: "500",
+            marginTop: "1vh",
+            marginLeft: "4vw",
+            marginBottom: "1vh",
+          }}
+        >
+          Add More Data
         </div>
+        <FileUpload />
+      </div>
     );
 }
 

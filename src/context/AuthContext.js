@@ -17,7 +17,7 @@ function AuthContextProvider(props) {
   }
 
   useEffect(() => {
-
+    getLoggedIn();
   }, [loggedIn,role]);
 
   return (
