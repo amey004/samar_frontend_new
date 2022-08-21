@@ -1,33 +1,37 @@
 import React, { useState,useEffect } from 'react';
 import {Box, TextField, Button, Select, MenuItem,Grid} from '@material-ui/core';
 import slum from '../images/slum1.jpg';
+import axios from "axios"
 import "./App.css"
 
 function ReportBox(){
-    var projects = [
-      { projectId: 1, projectName: "Dhankawadi Towers", image: slum },
-      { projectId: 2, projectName: "Sahakarnagar Heights", image: slum },
-      { projectId: 3, projectName: "Sai Krupa CHS", image: slum },
-      { projectId: 4, projectName: "Kumar Heights", image: slum },
-      { projectId: 5, projectName: "Aundh Housing", image: slum },
-      { projectId: 6, projectName: "Sai Towers", image: slum },
-      { projectId: 7, projectName: "Dhankawadi Towers", image: slum },
-      { projectId: 8, projectName: "Dhankawadi Towers", image: slum },
-      { projectId: 9, projectName: "Dhankawadi Towers", image: slum },
-    ];
     const [project, setProject] = useState();
+    const [projects,setProjects] = useState([]);
     const [name,setname] = useState();
     const [email,setemail] = useState();
     const [subject,setsubject] = useState();
     const [detail,setdetail] = useState();
     const sendData = () =>{
       console.log(name,email,subject,project,detail);
+      axios.post("http://localhost:5000/report");
     }
     const handleChange = (event) => {
         console.log(event.target.value)
         setProject(event.target.value);
       };
-    useEffect(() => {}, [project,name,email,subject,detail]);
+    useEffect(() => {
+      const  fetchData = async () =>{
+          var data = await axios.get("http://localhost:5000/projects");
+          console.log(data.data);
+          setProjects(data.data);
+          data.data.forEach((info)=>{
+            console.log(info);
+          })
+          console.log(data.data['0']);
+          console.log(projects)
+      }
+      fetchData();
+    }, [project,name,email,subject,detail,projects]);
     return (
       <Grid container justifyContent={"space-evenly"}>
         <Grid className="boxes" item sm={11} md={4}>
@@ -106,8 +110,8 @@ function ReportBox(){
               }}
             >
               {projects.map((e, key) => (
-                <MenuItem value={e.projectId} key={e.projectId}>
-                  {e.projectName}
+                <MenuItem value={e.id} key={e.id}>
+                  {e.name}
                 </MenuItem>
               ))}
             </Select>
