@@ -22,8 +22,8 @@ function ProjectItem(props){
                     borderRadius:"7px",
 
                 }}></Box>
-                <div></div>
-                {props.data.projectName}
+                <div style={{fontSize:"12px"}}>{props.data.projectName}</div>
+                
             </Card>
     );
 }

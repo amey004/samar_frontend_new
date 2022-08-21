@@ -11,7 +11,7 @@ import { NavLink} from "react-router-dom";
 import logo from "./images/samar_logo.png";
 import AuthContext from './context/AuthContext';
 import axios from 'axios';
-
+import "./index.css"
 
 function NavBar (){
   const[isNavOpen,setisNavOpen] = useState(false);
@@ -33,7 +33,7 @@ function NavBar (){
     }
   },[url,role])
     return (
-      <div style={{ display: "flex"}} className="container">
+      <div style={{ display: "flex" }}>
         <Navbar expand="md" style={{ width: "100%" }} fixed="top">
           <NavbarToggler className="mr-2" onClick={toggleNav} />
           <NavbarBrand className="" href="/" style={{ width: "100%" }}>
@@ -52,8 +52,20 @@ function NavBar (){
                   marginLeft: "1vw",
                   fontSize: "20px",
                 }}
+                className="navbar-heading1"
               >
                 Slum Administration, Management and Rehabilitation
+              </p>
+              <p
+                style={{
+                  marginLeft: "1vw",
+                  fontSize: "18px",
+                }}
+                className="navbar-heading2"
+              >
+                Slum Administration, Management
+                <br />
+                and Rehabilitation
               </p>
             </div>
           </NavbarBrand>

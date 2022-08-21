@@ -1,10 +1,13 @@
 import React,{useEffect,useContext} from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid } from '@material-ui/core';
+import { Grid, Button, Box } from '@material-ui/core';
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
+import Visualize from "./visualization.js";
 import AuthContext from '../context/AuthContext';
+import "./App.css"
+
 function GovernmentDashboard(){
     const {role} = useContext(AuthContext)
     console.log(role)
@@ -56,27 +59,55 @@ function GovernmentDashboard(){
     ];
 
     return (
-      <div style={{ marginTop: "12vh" }}>
+      <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
-          <Grid item sm={5}>
+          <Grid item xs={11}>
+            <div
+              className="heading-stat"
+              style={{
+                fontWeight: "500",
+                marginTop: "1vh",
+                marginLeft: "4vw",
+                marginBottom: "1vh",
+              }}
+            >
+              Statistics
+            </div>
+            <Visualize />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              className="button-detail"
+              style={{
+                backgroundColor: "#197278",
+                color: "#FFFFFF",
+                marginTop: "auto",
+                marginLeft: "80vw",
+                marginBottom: "2vh",
+              }}
+            >
+              View Detailed Report
+            </Button>
+          </Grid>
+          <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Current Projects
             </div>
             <CarouselCard projectDetails={currentProjects} />
           </Grid>
-          <Grid item sm={5}>
+          <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Past Projects
             </div>
             <CarouselCard projectDetails={pastProjects} />
           </Grid>
-          <Grid item sm={5}>
+          <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Upcoming Projects
             </div>
             <CarouselCard projectDetails={upcomingProjects} />
           </Grid>
-          <Grid item sm={5}>
+          <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>Notices</div>
             <Notices notices={noticesList} />
           </Grid>

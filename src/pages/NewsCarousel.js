@@ -38,7 +38,6 @@ function Item(props) {
     <div style={{position: 'relative'}}>
       <img src={props.item.image} alt="" className="carousel-img"></img>
       <div className="textbox">{props.item.description}</div>
-      
     </div>
   );
 }

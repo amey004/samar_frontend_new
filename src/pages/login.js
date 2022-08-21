@@ -26,8 +26,6 @@ function Login() {
     loop: true,
     autoplay: true,
     animationData: login,
-    // here is where we will declare lottie animation
-    // "animation" is what we imported before animationData: animation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -186,24 +184,12 @@ function Login() {
             textTransform: "capitalize",
             color: "black",
             fontSize: "12px",
-            marginLeft: "5vw",
+            marginLeft: "4vw",
             marginBottom: "0.5vw",
           }}
         >
           Forgot Password?
         </div>
-        <Link
-          style={{
-            textTransform: "capitalize",
-            color: "black",
-            fontSize: "12px",
-            marginLeft: "2vw",
-            marginBottom: "2vw",
-          }}
-          to="/register"
-        >
-          Don't have an account? Register here
-        </Link>
       </div>
       <div classname="row-login">
         <Lottie options={defaultOptions} height={"20vw"} width={"25vw"} />

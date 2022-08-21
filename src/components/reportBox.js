@@ -16,14 +16,21 @@ function ReportBox(){
       { projectId: 9, projectName: "Dhankawadi Towers", image: slum },
     ];
     const [project, setProject] = useState();
+    const [name,setname] = useState();
+    const [email,setemail] = useState();
+    const [subject,setsubject] = useState();
+    const [detail,setdetail] = useState();
+    const sendData = () =>{
+      console.log(name,email,subject,project,detail);
+    }
     const handleChange = (event) => {
         console.log(event.target.value)
         setProject(event.target.value);
       };
-    useEffect(() => {}, [project]);
+    useEffect(() => {}, [project,name,email,subject,detail]);
     return (
       <Grid container justifyContent={"space-evenly"}>
-        <Grid className='boxes' item sm={11} md={4}>
+        <Grid className="boxes" item sm={11} md={4}>
           <Box
             style={{
               backgroundColor: "#EEF0F2",
@@ -51,6 +58,8 @@ function ReportBox(){
             <TextField
               hiddenLabel
               type="text"
+              value={name}
+              onChange={(e) => setname(e.target.value)}
               size="small"
               variant="outlined"
               style={{
@@ -69,6 +78,8 @@ function ReportBox(){
               type="email"
               size="small"
               variant="outlined"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               style={{
                 margin: "1vh",
               }}
@@ -87,7 +98,7 @@ function ReportBox(){
               autoWidth={true}
               value={project}
               variant="outlined"
-              onChange={(e) => handleChange}
+              onChange={(e) => handleChange(e)}
               style={{
                 margin: "1vh",
                 height: "40px",
@@ -95,7 +106,7 @@ function ReportBox(){
               }}
             >
               {projects.map((e, key) => (
-                <MenuItem value={e.projectName} key={key}>
+                <MenuItem value={e.projectId} key={e.projectId}>
                   {e.projectName}
                 </MenuItem>
               ))}
@@ -112,6 +123,8 @@ function ReportBox(){
               type="text"
               size="small"
               variant="outlined"
+              value={subject}
+              onChange={(e) => setsubject(e.target.value)}
               fullWidth
               style={{
                 margin: "1vh",
@@ -131,6 +144,8 @@ function ReportBox(){
               rows={4}
               size="small"
               variant="outlined"
+              value={detail}
+              onChange={(e) => setdetail(e.target.value)}
               style={{
                 marginTop: "1vh",
                 width: "70%",
@@ -140,6 +155,7 @@ function ReportBox(){
             <div>
               <Button
                 variant="contained"
+                onClick={() => sendData()}
                 style={{
                   borderRadius: "1.3vw",
                   borderColor: "black",

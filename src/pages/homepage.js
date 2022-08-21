@@ -1,7 +1,6 @@
 import NewsCarousel from "./NewsCarousel.js";
-
 import React ,{useContext,useEffect} from "react";
-import Visualize from "./visualization.js";
+
 import AuthContext from "../context/AuthContext.js";
 // import Map from "./kepler/maps";
 
@@ -19,7 +18,7 @@ function LandingPage() {
     <>
       <div className="home">
       <NewsCarousel />
-      <Visualize/>
+      
       </div>
     </>
   );

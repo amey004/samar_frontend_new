@@ -1,0 +1,18 @@
+  .carousel{
+    height: auto;
+  }
+@media only screen and (max-width: 600px) {
+   .govtdash{
+    margin-top: 35% !important;
+  }
+  .heading-stat{
+    text-align: center;
+  }
+  .button-detail{
+    margin-left: 25vw !important;
+  }
+  .carousel{
+    overflow-x: hidden;
+    height: auto;
+  }
+}

@@ -1,9 +1,21 @@
 .boxes{
     
 }
-
+.scroll-menu{
+    width: 84% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 @media only screen and (max-width: 600px) {
   .boxes {
     margin-top: 10% !important;
+  }
+  .scroll-menu{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 93% !important;
+  }
+  .subnoticeItem{
+    width: 150px !important;
   }
 }   
