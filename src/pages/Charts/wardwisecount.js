@@ -15,7 +15,11 @@ const options = {
   }
 }
 
-export const Wardcount = ()=>{
+export const Wardcount = (props)=>{
+  var ward = props.ward;
+  function filterWard(wardName){
+    return wardName.WARD_2017 == ward;
+  }
   const [data, setData] = useState({
     datasets: [{
         data: [10, 20, 30],
@@ -42,14 +46,26 @@ export const Wardcount = ()=>{
         const label = [];
         const data1 = [];
         var obj = {};
-
-        for (var i of res) {
-          const newId = i.WARD_2017.replace(/[^a-z]/gi, ' ');
-          if (!obj[newId])
-            obj[newId] = 1;
-          else if (obj[newId])
-            obj[newId] += 1;
+        if(props.ward == "ALL" || props.ward == ""){
+          for (var i of res) {
+            const newId = i.WARD_2017.replace(/[^a-z]/gi, ' ');
+            if (!obj[newId])
+              obj[newId] = 1;
+            else if (obj[newId])
+              obj[newId] += 1;
+          }
         }
+        else{
+          const filteredRes = res.filter(filterWard);
+          for (var i of filteredRes) {
+            const newId = i.WARD_2017.replace(/[^a-z]/gi, ' ');
+            if (!obj[newId])
+              obj[newId] = 1;
+            else if (obj[newId])
+              obj[newId] += 1;
+          }
+        }
+        
         const result = Object.fromEntries(Object.entries(obj)
           .sort(([, a], [, b]) => b - a)
           .filter((s => ([, v]) => s.add(v))(new Set))
@@ -115,7 +131,7 @@ export const Wardcount = ()=>{
       })
     }
     getData();
-  },[])
+  },[props.ward])
   return (
     <Pie data={data} width={350} height={350} options={ options} />
   );

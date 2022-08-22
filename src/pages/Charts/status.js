@@ -16,7 +16,14 @@ const options = {
     }
   }
 }
-export const Status = () => {
+
+
+
+export const Status = (props) => {
+  var ward = props.ward;
+  function filterWard(wardName){
+    return wardName.WARD_2017 == ward;
+  }
     const [tenData, setTenData] = useState({
         datasets: [{
             data: [10, 20, 30],
@@ -43,7 +50,9 @@ export const Status = () => {
         const label = [];
         const data = [];
         var obj = {};
-        for(var i of res) {
+        // console.log(props.ward);
+        if(props.ward === "ALL" || props.ward === ""){
+          for(var i of res) {
             if (!obj[i.SRA_STATUS]) {
               obj[i.SRA_STATUS] = 1;
               
@@ -51,6 +60,19 @@ export const Status = () => {
               obj[i.SRA_STATUS] += 1;
             }
           }
+        }
+        else{
+          const filteredRes = res.filter(filterWard);
+          for(var i of filteredRes) {
+            if (!obj[i.SRA_STATUS]) {
+              obj[i.SRA_STATUS] = 1;
+              
+            } else if (obj[i.SRA_STATUS]) {
+              obj[i.SRA_STATUS] += 1;
+            }
+          }
+        }
+        
 
         Object.entries(obj).map(([key, value]) => {
           //console.log(`${key}`+':'+`${value}`)
@@ -90,7 +112,7 @@ export const Status = () => {
       })
     }
     getData();
-  },[])
+  },[props.ward])
   return (
     <Doughnut data={tenData} width={350} height={350} options={options} />
   );

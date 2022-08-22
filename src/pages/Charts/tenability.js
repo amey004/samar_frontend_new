@@ -24,7 +24,11 @@ const options = {
   },
 };
 
-export const Tenability = () => {
+export const Tenability = (props) => {
+  var ward = props.ward;
+  function filterWard(wardName){
+    return wardName.WARD_2017 == ward;
+  }
     const [tenData, setTenData] = useState({
         datasets: [{
             data: [10, 20, 30],
@@ -51,20 +55,40 @@ export const Tenability = () => {
         const label = [];
         const data = [];
         var obj = {};
-        for(var i of res) {
-          if (!obj[i.WARD_2017]) {
-            obj[i.WARD_2017] = [];
-            obj[i.WARD_2017][0] = 0;
-            obj[i.WARD_2017][1] = 0;
-            obj[i.WARD_2017][2] = 0;
-            obj[i.WARD_2017][3] = 0;
-              
+        if(props.ward == "ALL" || props.ward == ""){
+          for(var i of res) {
+            if (!obj[i.WARD_2017]) {
+              obj[i.WARD_2017] = [];
+              obj[i.WARD_2017][0] = 0;
+              obj[i.WARD_2017][1] = 0;
+              obj[i.WARD_2017][2] = 0;
+              obj[i.WARD_2017][3] = 0;
+                
+            }
+            if (i.TENEBILITY === "TENABLE") {obj[i.WARD_2017][0] += 1;}
+            else if (i.TENEBILITY  === "UNTENABLE") {obj[i.WARD_2017][1] += 1; }
+            else if (i.TENEBILITY  === "COMPLETED"){ obj[i.WARD_2017][2] += 1; }
+            else if (i.TENEBILITY  === "REMOVED"){ obj[i.WARD_2017][3] += 1;}
           }
-          if (i.TENEBILITY === "TENABLE") {obj[i.WARD_2017][0] += 1;}
-          else if (i.TENEBILITY  === "UNTENABLE") {obj[i.WARD_2017][1] += 1; }
-          else if (i.TENEBILITY  === "COMPLETED"){ obj[i.WARD_2017][2] += 1; }
-          else if (i.TENEBILITY  === "REMOVED"){ obj[i.WARD_2017][3] += 1;}
         }
+        else{
+          const filteredRes = res.filter(filterWard);
+          for(var i of filteredRes) {
+            if (!obj[i.WARD_2017]) {
+              obj[i.WARD_2017] = [];
+              obj[i.WARD_2017][0] = 0;
+              obj[i.WARD_2017][1] = 0;
+              obj[i.WARD_2017][2] = 0;
+              obj[i.WARD_2017][3] = 0;
+                
+            }
+            if (i.TENEBILITY === "TENABLE") {obj[i.WARD_2017][0] += 1;}
+            else if (i.TENEBILITY  === "UNTENABLE") {obj[i.WARD_2017][1] += 1; }
+            else if (i.TENEBILITY  === "COMPLETED"){ obj[i.WARD_2017][2] += 1; }
+            else if (i.TENEBILITY  === "REMOVED"){ obj[i.WARD_2017][3] += 1;}
+          }
+        }
+        
         const l = [];
         const ten = [];
         const unten = [];
@@ -117,7 +141,7 @@ export const Tenability = () => {
       })
     }
     getData();
-  },[])
+  },[props.ward])
   return (
       <Bar data={tenData} width={350} height={350} options={options}/>
   );
