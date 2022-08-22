@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import './App.css';
+import '../App.css';
 import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { Bar} from 'react-chartjs-2';
@@ -22,7 +22,6 @@ const options = {
         }
       },
   },
-  
 };
 
 export const Tenability = () => {
@@ -83,26 +82,30 @@ export const Tenability = () => {
           datasets: [
             {
               label: "TENABLE",
-              backgroundColor: "rgba(255, 99, 132, 0.9)",
-              borderColor: "rgba(255, 99, 132, 0.9)",
+              backgroundColor:'#478e93',
+              borderColor: '#0f4448',
+              borderWidth:2,
               data: ten,
             },
             {
               label: "UNTENABLE",
-              backgroundColor: "rgba(255, 206, 86, 0.9)",
-              borderColor: "rgba(255, 206, 86, 0.9)",
+              backgroundColor:'#eb6071',
+              borderColor: '#b6162a',
+              borderWidth:2,
               data: unten,
             },
             {
               label: "COMPLETED",
-              backgroundColor: "rgba(153, 102, 255, 0.9)",
-              borderColor: "rgba(153, 102, 255, 0.9)",
+              backgroundColor: '#75aaae',
+              borderColor: '#52777a',
+              borderWidth:2,
               data: comp,
             },
             {
               label: "REMOVED",
-              backgroundColor: 'rgba(75, 192, 192, 0.9)',
-              borderColor: 'rgba(75, 192, 192, 0.9)',
+              backgroundColor:'#f7b5b9',
+              borderColor: '#f1747d',
+              borderWidth:2,
               data: rem,
             },
           ],
@@ -116,7 +119,7 @@ export const Tenability = () => {
     getData();
   },[])
   return (
-      <Bar data={tenData} options={options}/>
+      <Bar data={tenData} width={350} height={350} options={options}/>
   );
 }
 

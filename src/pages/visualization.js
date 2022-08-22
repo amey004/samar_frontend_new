@@ -1,8 +1,9 @@
 import React from "react";
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+// import Box from '@mui/material/Box';
+// import Paper from '@mui/material/Paper';
+// import Grid from '@mui/material/Grid';
+import {Button, Box, Grid, Paper} from "@material-ui/core";
 import {Household} from "./Charts/household";
 import {Status} from "./Charts/status";
 import {Tenability} from "./Charts/tenability";
@@ -28,39 +29,53 @@ function Visualize(){
           Map
         </Box> */}
         <Box sx={{ flexGrow: 1 }} paddingBottom={"5vh"}>
-          <Grid container justifyContent={"center"} spacing={3}>
-            <Grid item xs={12} md={8}>
+
+          <Grid container justifyContent={"space-evenly"} spacing={3}>
+          
+            <Grid item xs={5} md={4}>
               <Item>
                 <h6>Wardwise Slum Households</h6>
                 <Household />
               </Item>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={5} md={5}>
               <Item>
-                <h6>Slum Status</h6>
+              <h6>Wardwise Slum Count</h6>
                 <div
                   style={{
-                    marginTop: "17%",
+                    marginTop: "-10%",
+                    marginBottom:"-10%",
                   }}
                 >
-                  <Status />
+                <Wardcount />
                 </div>
               </Item>
             </Grid>
-            <Grid item xs={12} md={4}>
+            
+            <Grid item xs={5} md={4}>
               <Item>
-                <h6>Wardwise Slum Count</h6>
-                <Wardcount />
-              </Item>
-            </Grid>
-            <Grid item xs={12} md={7}>
-              <Item>
-                <h6>Tenability</h6>
+              <h6>Tenability</h6>
                 <div style={{ height: "50%" }}>
                   <Tenability />
                 </div>
               </Item>
             </Grid>
+            <Grid item xs={5} md={6}>
+              <Item>
+              <h6>Slum Status</h6>
+                <div
+                  style={{
+                    marginTop: "-17%",
+                    marginBottom:"-10%",
+                  }}
+                >
+                  <Status />
+                </div>
+                
+              </Item>
+            </Grid>
+            
+           
           </Grid>
         </Box>
       </div>

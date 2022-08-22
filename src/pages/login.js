@@ -16,7 +16,7 @@ import AuthContext from "../context/AuthContext";
 
 axios.defaults.withCredentials = true;
 function Login() {
-  const [category, setcategory] = useState("developer");
+  const [category, setcategory] = useState("authority");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [status, setstatus] = useState(200);
@@ -30,6 +30,7 @@ function Login() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   const {role,getLoggedIn,loggedIn,setrole} = useContext(AuthContext);
 
   useEffect(()=>{
@@ -89,20 +90,6 @@ function Login() {
         >
           <ToggleButton
             style={{
-              backgroundColor: category === "developer" ? "#478e93" : "#EEF0F2",
-              color: category === "developer" ? "#FFFFFF" : "#000000",
-              textTransform: "capitalize",
-              borderRadius: "1.3vw",
-              borderColor: category === "developer" ? "#478e93" : "#EEF0F2",
-              fontSize: "x-small",
-            }}
-            value="developer"
-            onClick={() => setcategory("developer")}
-          >
-            Developer
-          </ToggleButton>
-          <ToggleButton
-            style={{
               backgroundColor: category === "authority" ? "#478e93" : "#EEF0F2",
               textTransform: "capitalize",
               color: category === "authority" ? "#FFFFFF" : "#000000",
@@ -115,6 +102,21 @@ function Login() {
           >
             Government Authority
           </ToggleButton>
+          <ToggleButton
+            style={{
+              backgroundColor: category === "developer" ? "#478e93" : "#EEF0F2",
+              color: category === "developer" ? "#FFFFFF" : "#000000",
+              textTransform: "capitalize",
+              borderRadius: "1.3vw",
+              borderColor: category === "developer" ? "#478e93" : "#EEF0F2",
+              fontSize: "x-small",
+            }}
+            value="developer"
+            onClick={() => setcategory("developer")}
+          >
+            Developer
+          </ToggleButton>
+          
         </ToggleButtonGroup>
         <div className="textfield">
           <TextField

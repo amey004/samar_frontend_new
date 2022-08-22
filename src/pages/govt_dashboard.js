@@ -1,7 +1,7 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useEffect,useContext, useState} from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid, Button, Box } from '@material-ui/core';
+import { Grid, Button, Box , Select} from '@material-ui/core';
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
 import Visualize from "./visualization.js";
@@ -10,6 +10,7 @@ import "./App.css"
 
 function GovernmentDashboard(){
     const {role} = useContext(AuthContext)
+    // const [ward,setWard] = useState("ALL");
     console.log(role)
     var currentProjects = [
         {projectId:1,projectName:'Dhankawadi Towers',image:slum},
@@ -61,6 +62,7 @@ function GovernmentDashboard(){
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
+          
           <Grid item xs={11}>
             <div
               className="heading-stat"
@@ -73,21 +75,22 @@ function GovernmentDashboard(){
             >
               Statistics
             </div>
+            <Button
+                className="button-detail"
+                style={{
+                  backgroundColor: "#197278",
+                  color: "#FFFFFF",
+                  marginTop: "2vh",
+                  marginLeft: "80vw",
+                  marginBottom: "2vh",
+                }}
+              >
+                View Detailed Report
+              </Button> 
             <Visualize />
           </Grid>
           <Grid item xs={12}>
-            <Button
-              className="button-detail"
-              style={{
-                backgroundColor: "#197278",
-                color: "#FFFFFF",
-                marginTop: "auto",
-                marginLeft: "80vw",
-                marginBottom: "2vh",
-              }}
-            >
-              View Detailed Report
-            </Button>
+              
           </Grid>
           <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
