@@ -53,7 +53,6 @@ export const Household = (props) => {
   labels:['Red'], 
   });
 
-  const [ward, setWard] = useState("02 YERWADA KALAS DHANORI");
 
   useEffect(()=>{
     const getData = () =>{
@@ -71,7 +70,8 @@ export const Household = (props) => {
         const label = [];
         const data = [];
         var obj = {};
-        if(ward === "ALL"){
+        // console.log(props.ward);
+        if(props.ward === "ALL" || props.ward === ""){
           for (var i of res) {
             if (!obj[i.WARD_2017]) {
               obj[i.WARD_2017] = parseFloat(i.APPROX_HH);
@@ -83,7 +83,7 @@ export const Household = (props) => {
         }
         else{
           for (var i of res) {
-            if(ward === i.WARD_2017){
+            if(props.ward === i.WARD_2017){
               if (!obj[i.SLUM_NAME]) {
                 obj[i.SLUM_NAME] = parseFloat(i.APPROX_HH);
               }
@@ -136,7 +136,7 @@ export const Household = (props) => {
       })
     }
     getData();
-  },[])
+  },[props.ward])
   return (
     <Bar data={hhdata} width={350} height={350} options={options} />
   );

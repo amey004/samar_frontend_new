@@ -39,7 +39,7 @@ function App() {
           ) : (
             <Route path="/govt-dashboard" element={<ErrorPage />} />
           )} */}
-          <Route path="/map" element={<Map />} />
+          {/* <Route path="/map" element={<Map />} /> */}
         </Routes>
       </Router>
     </div>

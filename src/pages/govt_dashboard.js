@@ -2,7 +2,8 @@
 import React,{useEffect,useContext, useState} from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid, Button, Box , Select} from '@material-ui/core';
+import { Grid, Button , Select, MenuItem} from '@material-ui/core';
+import { Link } from "react-router-dom";
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
 import Visualize from "./visualization.js";
@@ -11,8 +12,9 @@ import "./App.css"
 
 function GovernmentDashboard(){
     const {role} = useContext(AuthContext)
-    // const [ward,setWard] = useState("ALL");
-    console.log(role)
+    const [ward,setWard] = useState("");
+    const [wards, setWards] = useState(["ALL"]);
+    // console.log(role)
     var currentProjects = [
         {projectId:1,projectName:'Dhankawadi Towers',image:slum},
         {projectId:2,projectName:'Sahakarnagar Heights',image:slum},
@@ -59,11 +61,42 @@ function GovernmentDashboard(){
         // {noticeId:7, recipient:"Baburao",subject:"Illegal Renting"},
         // {noticeId:8, recipient:"Baburao",subject:"Illegal Renting"},
     ];
+    
+    const handleChange = (event) => {
+      setWard(event.target.value);
+      // console.log(ward);
+    };
+    const getData = () =>{
+      fetch('./data.json'
+        , {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        }
+      ).then((data) => {
+        const res = data.json();
+        return res;
+      }).then((res) => {
+        for(var i of res) {
+            if (!wards.includes(i.WARD_2017)) {
+              wards.push(i.WARD_2017);
+            }
+          }
+          console.log(wards);
 
+      }).catch(e => {
+        console.log("error", e)
+      })
+    };
+
+    useEffect(()=>{},[ward, wards]);
+
+
+    getData();
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
-          
           <Grid item xs={11}>
             <div
               className="heading-stat"
@@ -76,19 +109,42 @@ function GovernmentDashboard(){
             >
               Statistics
             </div>
+          </Grid>
+          <Grid item xs={5}>
+          <Select value={ward} label={"Select Ward"} 
+              onChange={handleChange}
+              style={{backgroundColor: "#FFFFFF",
+                  color: "#197278",
+                  marginTop: "2vh",
+                  marginLeft: "20vw",
+                  marginBottom: "2vh",}}>
+              {wards.map((e) => (
+                 <MenuItem value={e} key={e}>{e}</MenuItem>
+              ))}
+            </Select>
+          </Grid>
+          <Grid item xs={5}>
+            <Link to="/detailed-report" style={{textDecoration:"none"}}>
             <Button
                 className="button-detail"
                 style={{
                   backgroundColor: "#197278",
                   color: "#FFFFFF",
                   marginTop: "2vh",
-                  marginLeft: "80vw",
+                  marginLeft: "25vw",
                   marginBottom: "2vh",
                 }}
               >
+                <div>
                 View Detailed Report
+                </div>
+                
               </Button> 
-            <Visualize />
+            </Link>
+         
+          </Grid>
+          <Grid item xs = {11}>
+            <Visualize ward = {ward}/>
           </Grid>
           <Grid item xs={12}>
               
