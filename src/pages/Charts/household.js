@@ -1,12 +1,31 @@
 import React,{useState,useEffect} from 'react';
-import './App.css';
+import '../App.css';
 import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend } from 'chart.js';
 import Chart from 'chart.js/auto';
-import { Bar} from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+/*
+function dynamicColors() {
+  var r = Math.floor(Math.random() * 150);
+  var g = Math.floor(Math.random() * 255);
+  return "rgba(" + r + "," + g + "," + 255 + ", 0.9)";
+}
 
+var randomColorGenerator = function (a) { 
+  var pool = [];
+  for(var i = 0; i < a; i++) {
+      pool.push(dynamicColors());
+  }
+  return pool; 
+};
+*/
 ChartJs.register(Tooltip, Title, ArcElement, Legend);
 const options = {
   responsive: true,
+  plugins: {
+    colorschemes: {
+        scheme: 'office/Aspect6'
+    },
+  },
   scales: {
     x: {
       display: false,
@@ -22,7 +41,7 @@ const options = {
   },
 };
 
-export const Household = () => {
+export const Household = (props) => {
   const [hhdata, setHhdata] = useState({
     datasets: [{
         data: [10, 20, 30],
@@ -33,6 +52,9 @@ export const Household = () => {
   ],
   labels:['Red'], 
   });
+
+  const [ward, setWard] = useState("02 YERWADA KALAS DHANORI");
+
   useEffect(()=>{
     const getData = () =>{
       fetch('./data.json'
@@ -49,14 +71,30 @@ export const Household = () => {
         const label = [];
         const data = [];
         var obj = {};
-        for (var i of res) {
-          if (!obj[i.WARD_2017]) {
-            obj[i.WARD_2017] = parseFloat(i.APPROX_HH);
-          }
-          else if (obj[i.WARD_2017]) {
-            obj[i.WARD_2017] += parseFloat(i.APPROX_HH);
+        if(ward === "ALL"){
+          for (var i of res) {
+            if (!obj[i.WARD_2017]) {
+              obj[i.WARD_2017] = parseFloat(i.APPROX_HH);
+            }
+            else if (obj[i.WARD_2017]) {
+              obj[i.WARD_2017] += parseFloat(i.APPROX_HH);
+            }
           }
         }
+        else{
+          for (var i of res) {
+            if(ward === i.WARD_2017){
+              if (!obj[i.SLUM_NAME]) {
+                obj[i.SLUM_NAME] = parseFloat(i.APPROX_HH);
+              }
+              else if (obj[i.SLUM_NAME]) {
+                obj[i.SLUM_NAME] += parseFloat(i.APPROX_HH);
+              }
+            }
+            
+          }
+        }
+        
 
         Object.entries(obj).map(([key, value]) => {
           //console.log(`${key}`+':'+`${value}`)
@@ -68,23 +106,26 @@ export const Household = () => {
         datasets: [{
             label:'Household',
             data:data,
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.9)',
-              'rgba(54, 162, 235, 0.9)',
-              'rgba(255, 206, 86, 0.9)',
-              'rgba(255, 20, 147, 0.9)', 
-              'rgba(75, 192, 192, 0.9)',
-              'rgba(153, 102, 255, 0.9)',
-              'rgba(255, 159, 64, 0.9)',
-              'rgba(102,205,170, 0.9)',
-              'rgba(255,52,179,0.9)',
-              'rgba(154, 205, 50, 0.9)',
-              'rgba(65, 105, 225, 0.9)',
-              'rgba(218,112,214, 0.9)',
-              'rgba(202,255,112, 0.9)',
-              'rgba(138,46,226,0.9)', 
-              'rgba(255,127,0,0.9)',
-            ],
+            backgroundColor:'#478e93',
+            borderColor: '#0f4448',
+            borderWidth:2,
+            /*[
+            'rgba(25, 25, 112, 0.9)',
+            'rgba(20, 20, 120, 0.9)',
+            'rgba(0, 0, 120, 0.9)',
+            'rgba(0, 0, 139, 0.9)',
+            'rgba(0, 0, 170, 0.9)',
+            'rgba(0, 0, 205, 0.9)',
+            'rgba(0, 0, 255, 0.9)',
+            'rgba(65, 105, 225, 0.9)',
+            'rgba(75, 150, 230, 0.9)',
+            'rgba(30, 144, 255, 0.9)', 
+            'rgba(0, 191, 255, 0.9)',
+            'rgba(0, 191, 250, 0.9)',
+            'rgba(135, 206, 230, 0.9)',
+            'rgba(173,216,230, 0.9)',
+            'rgba(173,216,220, 0.9)',]
+            */
         },
       ],
       labels:label, 
@@ -97,7 +138,7 @@ export const Household = () => {
     getData();
   },[])
   return (
-    <Bar data={hhdata} options={options}/>
+    <Bar data={hhdata} width={350} height={350} options={options} />
   );
 }
 

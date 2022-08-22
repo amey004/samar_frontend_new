@@ -191,13 +191,13 @@ code {
   opacity: 0.75;
 }
 
-.MuiAccordion-root{
-  justify-content: center;
-  background-color: #197278;
-  color: white;
-  margin-top: 1vw;
-  width: 35vw;
-}
+  /* .MuiAccordion-root{
+    justify-content: center;
+    background-color: #197278;
+    color: white;
+    margin-top: 1vw;
+    width: 35vw;
+  } */
 
 .MuiDialog-root{
   color: #197278;

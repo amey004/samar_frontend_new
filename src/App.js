@@ -28,17 +28,17 @@ function App() {
           <Route path="/report" element={<ReportSuggest />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/detailed-report" element={<ViewReport/>}/>
-          {/* <Route path="/govt-dashboard" element={<GovernmentDashboard />} /> */}
+          <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
           {loggedIn && role === "developer" ? (
             <Route path="/dev-dashboard" element={<DeveloperDashboard />} />
           ) : (
             <Route path="/dev-dashboard" element={<ErrorPage />} />
           )}
-          {loggedIn && role === "authority" ? (
+          {/* {loggedIn && role === "authority" ? (
             <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
           ) : (
             <Route path="/govt-dashboard" element={<ErrorPage />} />
-          )}
+          )} */}
           <Route path="/map" element={<Map />} />
         </Routes>
       </Router>

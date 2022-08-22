@@ -1,10 +1,19 @@
 import React,{useState,useEffect} from 'react';
-import './App.css';
+import '../App.css';
 import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { Pie } from 'react-chartjs-2';
 
 ChartJs.register(Tooltip, Title, ArcElement, Legend);
+
+const options = {
+  plugins:{
+    legend: {
+      display: true,
+      position: 'right',
+    }
+  }
+}
 
 export const Wardcount = ()=>{
   const [data, setData] = useState({
@@ -41,17 +50,45 @@ export const Wardcount = ()=>{
           else if (obj[newId])
             obj[newId] += 1;
         }
-
-        Object.entries(obj).map(([key, value]) => {
+        const result = Object.fromEntries(Object.entries(obj)
+          .sort(([, a], [, b]) => b - a)
+          .filter((s => ([, v]) => s.add(v))(new Set))
+        );
+        var i = 0;
+        var tempdata = 0;
+        for (var key in result) {
+          if (i<5) {
+            label.push(key);
+            data1.push(result[key])
+            i++
+          }
+          else {
+            tempdata += result[key];
+          }
+        }
+        data1.push(tempdata)
+        label.push("   OTHERS");
+        /*
+        Object.entries(result).map(([key, value]) => {
           label.push(`${key}`);
           data1.push(`${value}`);
-        })
+        })*/
 
       setData({
         datasets: [{
             label:'Wardwise Slum',
             data:data1,
-            backgroundColor:[
+          backgroundColor: [
+            '#eb6071',
+            '#52777a',
+            '#f1747d',
+            '#478e93',
+            '#f7b5b9',
+            '#75aaae',
+            
+            
+            
+              /*
               'rgba(255, 99, 132, 0.9)',
               'rgba(54, 162, 235, 0.9)',
               'rgba(255, 206, 86, 0.9)',
@@ -67,7 +104,7 @@ export const Wardcount = ()=>{
               'rgba(202,255,112, 0.9)',
               'rgba(138,46,226,0.9)',
               'rgba(255,127,0,0.9)',
-              
+              */
             ],
         },
       ],
@@ -80,6 +117,6 @@ export const Wardcount = ()=>{
     getData();
   },[])
   return (
-    <Pie data={data} width={350} height={350} />
+    <Pie data={data} width={350} height={350} options={ options} />
   );
 }

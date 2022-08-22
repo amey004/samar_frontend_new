@@ -97,6 +97,7 @@ function FaqsAndPolicies(){
 function FaqQuestion(faqQn) {  
     return (
       <div >
+        <br/>
         <Accordion disableGutters={true}>
           <AccordionSummary
              expandIcon={<HiPlus/>}
