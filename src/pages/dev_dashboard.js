@@ -4,6 +4,7 @@ import React from 'react';
 import CarouselCard from '../components/carouselCard.js';
 import ListBox from '../components/listBox.js';
 import slum from '../images/slum1.jpg';
+import "./App.css";
 
 function DeveloperDashboard(){
 
@@ -57,13 +58,13 @@ function DeveloperDashboard(){
     return (
         <div style={{marginTop:"12vh"}}>
             <Grid container justifyContent={"space-evenly"}>
-                <Grid item xs={5}>
+                <Grid item md={5}>
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>
                     <CarouselCard projectDetails={currentProjects}/>
                     <div style={{fontWeight:"500", marginTop:"1vh"}}>Past Projects</div>
                     <CarouselCard projectDetails={pastProjects}/>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item md={5}>
                     <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"3.5vw"}}>Grievances</div>
                     <ListBox projectsList={projectGrievances}/>
                 </Grid>

@@ -1,7 +1,7 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useContext} from 'react';
 import slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid, Button, Box } from '@material-ui/core';
+import { Grid, Button} from '@material-ui/core';
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
 import Visualize from "./visualization.js";
