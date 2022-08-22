@@ -32,13 +32,13 @@ function Visualize(){
 
           <Grid container justifyContent={"space-evenly"} spacing={3}>
           
-            <Grid item xs={5} md={4}>
+            <Grid item sm={12} md={4}>
               <Item>
                 <h6>Wardwise Slum Households</h6>
                 <Household />
               </Item>
             </Grid>
-            <Grid item xs={5} md={5}>
+            <Grid item sm={12} md={5}>
               <Item>
               <h6>Wardwise Slum Count</h6>
                 <div
@@ -52,7 +52,7 @@ function Visualize(){
               </Item>
             </Grid>
             
-            <Grid item xs={5} md={4}>
+            <Grid item sm={12} md={4}>
               <Item>
               <h6>Tenability</h6>
                 <div style={{ height: "50%" }}>
@@ -60,7 +60,7 @@ function Visualize(){
                 </div>
               </Item>
             </Grid>
-            <Grid item xs={5} md={6}>
+            <Grid item sm={12} md={6}>
               <Item>
               <h6>Slum Status</h6>
                 <div

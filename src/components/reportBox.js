@@ -60,7 +60,7 @@ function ReportBox(){
       };
     useEffect(() => {
       const  fetchData = async () =>{
-          var data = await axios.get("http://localhost:5000/projects");
+          var data = await axios.get("http://localhost:5000/fetchdata?table=projects");
           console.log(data.data);
           setProjects(data.data);
       }
