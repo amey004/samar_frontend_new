@@ -97,19 +97,6 @@ function NavBar (){
                   </NavLink>
                 </NavItem>
               )}
-
-              <NavItem style={{}}>
-                <NavLink
-                  className="nav-link"
-                  exact
-                  to="/faq"
-                  activeStyle={{
-                    color: "black",
-                  }}
-                >
-                  <h5>FAQ & Policies</h5>
-                </NavLink>
-              </NavItem>
               <NavItem>
                 <NavLink
                   className="nav-link"

@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/faq" element={<FaqsAndPolicies />} />
+          {/* <Route path="/faq" element={<FaqsAndPolicies />} /> */}
           <Route path="/report" element={<ReportSuggest />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/detailed-report" element={<ViewReport/>}/>
