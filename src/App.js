@@ -34,11 +34,11 @@ function App() {
           ) : (
             <Route path="/dev-dashboard" element={<ErrorPage />} />
           )}
-          {/* {loggedIn && role === "authority" ? (
+          {loggedIn && role === "authority" ? (
             <Route path="/govt-dashboard" element={<GovernmentDashboard />} />
           ) : (
             <Route path="/govt-dashboard" element={<ErrorPage />} />
-          )} */}
+          )}
           {/* <Route path="/map" element={<Map />} /> */}
         </Routes>
       </Router>

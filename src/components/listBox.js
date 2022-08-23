@@ -5,7 +5,7 @@ import {HiChevronDown} from 'react-icons/hi';
 
 function ProjectListItem(props){
     var projectDetails = props.project;
-
+    console.log(projectDetails);
     return (
         <Accordion style={{
             marginBottom:"-10px",
@@ -16,11 +16,11 @@ function ProjectListItem(props){
             backgroundColor:"#EEF0F2",
         }}>
             <AccordionSummary style={{height:"5vh", backgroundColor:"#EEF0F2"}} expandIcon={<HiChevronDown/>}>
-                {projectDetails.projectName}
+                {projectDetails.projectname}
             </AccordionSummary>
             <AccordionDetails>
                 <List>
-                    {projectDetails.grievances.map((e) => (<ListItem>{e.message}</ListItem>))}
+                    {projectDetails.grievances.map((e,key) => (<ListItem style={{display:"list-item" }}  key={key}>{e.subject}</ListItem>))}
                 </List>
             </AccordionDetails>
         </Accordion>
@@ -33,7 +33,6 @@ function ProjectListItem(props){
 
 function ListBox(props){
    
-
     console.table(props.projectsList);
     return (
         <div style={{
@@ -45,8 +44,8 @@ function ListBox(props){
             width:"35vw",
         }}>
             <List>
-                {props.projectsList.map((e) => (
-                     <ProjectListItem project={e}/>
+                {props.projectsList.map((e,key) => (
+                     <ProjectListItem project={e} key={key}/>
                 ))}
                 
             </List>

@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState,} from 'react';
 
 import CarouselCard from '../components/carouselCard.js';
 import ListBox from '../components/listBox.js';
@@ -32,6 +33,7 @@ function DeveloperDashboard(){
         {projectId:9,projectName:'Dhankawadi Towers',image:slum}
     ];
 
+    const [grievances,setgrievances] = useState([]);
     var projectGrievances = [
         {
             projectId:1,
@@ -54,22 +56,41 @@ function DeveloperDashboard(){
             ]
         },
     ];
+    const getData = async () => {
+        const data = await axios.get("http://localhost:5000/grievances");
+        setgrievances(data.data);
+    }
+    useEffect(()=>{
+        getData();
+    },[])
 
     return (
-        <div style={{marginTop:"12vh"}}>
-            <Grid container justifyContent={"space-evenly"}>
-                <Grid item md={5}>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Current Projects</div>
-                    <CarouselCard projectDetails={currentProjects}/>
-                    <div style={{fontWeight:"500", marginTop:"1vh"}}>Past Projects</div>
-                    <CarouselCard projectDetails={pastProjects}/>
-                </Grid>
-                <Grid item md={5}>
-                    <div style={{fontWeight:"500", marginTop:"1vh", marginLeft:"3.5vw"}}>Grievances</div>
-                    <ListBox projectsList={projectGrievances}/>
-                </Grid>
-            </Grid>
-        </div>
+      <div style={{ marginTop: "12vh" }}>
+        <Grid container justifyContent={"space-evenly"}>
+          <Grid item md={5}>
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+              Current Projects
+            </div>
+            <CarouselCard projectDetails={currentProjects} />
+            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+              Past Projects
+            </div>
+            <CarouselCard projectDetails={pastProjects} />
+          </Grid>
+          <Grid item md={5}>
+            <div
+              style={{
+                fontWeight: "500",
+                marginTop: "1vh",
+                marginLeft: "3.5vw",
+              }}
+            >
+              Grievances
+            </div>
+            <ListBox projectsList={grievances} />
+          </Grid>
+        </Grid>
+      </div>
     );
 }
 

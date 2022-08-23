@@ -26,7 +26,7 @@ function ReportBox(){
           name,
           email,
           subject,
-          detail,
+          detail
         });
         console.log(data.status);
         if (data.status === 200) {
@@ -57,6 +57,7 @@ function ReportBox(){
     const handleChange = (event) => {
         console.log(event.target.value)
         setProject(event.target.value);
+        // setporjectname(event.target.value)
       };
     useEffect(() => {
       const  fetchData = async () =>{
@@ -137,7 +138,7 @@ function ReportBox(){
                 autoWidth={true}
                 value={project}
                 variant="outlined"
-                onChange={(e) => handleChange(e)}
+                onChange={(e) => {handleChange(e)}}
                 style={{
                   margin: "1vh",
                   height: "40px",
