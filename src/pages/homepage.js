@@ -3,7 +3,7 @@ import React ,{useContext,useEffect} from "react";
 
 import AuthContext from "../context/AuthContext.js";
 // import Map from "./kepler/maps";
-
+import FaqsAndPolicies from "./faqs_and_policies.js";
 
 function LandingPage() {
   const {loggedIn,getLoggedIn} = useContext(AuthContext)
@@ -17,8 +17,8 @@ function LandingPage() {
   return (
     <>
       <div className="home">
-      <NewsCarousel />
-      
+        <NewsCarousel />
+        <FaqsAndPolicies />
       </div>
     </>
   );
