@@ -97,8 +97,7 @@ function GovernmentDashboard(){
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
-          <Grid item xs={11}>
-            <div
+            <h1
               className="heading-stat"
               style={{
                 fontWeight: "500",
@@ -108,11 +107,11 @@ function GovernmentDashboard(){
               }}
             >
               Statistics
-            </div>
-          </Grid>
+            </h1>
           <Grid item xs={5}>
           <Select value={ward} label={"Select Ward"} 
               onChange={handleChange}
+              placeholder="Select a ward"
               style={{backgroundColor: "#FFFFFF",
                   color: "#197278",
                   marginTop: "2vh",
