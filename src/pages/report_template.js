@@ -10,13 +10,25 @@ import { Wardcount } from "./Charts/wardwisecount";
 function ViewReport(){
     
     const createPDF = async () => {
-    const pdf = new jsPDF("portrait", "pt", "a4");
-    const data = await html2canvas(document.querySelector("#template"));
-    const img = data.toDataURL("image/png");  
-    const imgProperties = pdf.getImageProperties(img);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-    pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
+    const pdf = new jsPDF("portrait", "px", "a4");
+    // const data = await html2canvas(document.querySelector("#template"));
+    var pages = document.getElementsByClassName("page");
+    console.log(pages.length);
+    for(var i=0;i<pages.length;i++){
+        const data = await html2canvas(pages[i]);
+        const img = data.toDataURL("image/png");  
+        const imgProperties = pdf.getImageProperties(img);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        // const pdfHeight = pdf.internal.pageSize.getHeight();
+        // pdf.context2d.pageWrapYEnabled = true;
+        const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+        pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
+        if(i!=pages.length-1){
+            pdf.addPage();
+        }
+        
+    }
+    
     pdf.save("sample.pdf");
     };
     
@@ -90,9 +102,8 @@ const GetData = (props) =>{
         totalDensity:0.0,
         avgDensity:0.0,
     });
-    var ward = props.ward;
   function filterWard(wardName){
-    return wardName.WARD_2017 == props.ward;
+    return wardName.WARD_2017 === props.ward;
   }
     fetch('./data.json'
       , {
@@ -132,6 +143,7 @@ const GetData = (props) =>{
                 }
               }
               console.log(slums.length);
+              setAnalysis(analysis);
         }
         else{
             const filteredRes = res.filter(filterWard);
@@ -156,9 +168,9 @@ const GetData = (props) =>{
                 else{
                     wards[i.WARD_2017].push(i);
                 }
-                if(!wardNames.includes(i.WARD_2017)){
-                    wardNames.push(i.WARD_2017);
-                }
+                // if(!wardNames.includes(i.WARD_2017)){
+                //     wardNames.push(i.WARD_2017);
+                // }
                 
               }
         }
@@ -202,8 +214,16 @@ const GetData = (props) =>{
                 <div>Total Slum Population</div>
                 <div>{analysis.population ?? 0}</div>
                 <br/>
-                <div>Total Area Occupied</div>
-                <div>{Math.round(analysis.areaOccupied)??0} sq m</div>
+                {
+                        props.ward === "ALL"
+                        ?<div>
+                            <div>Total No of Wards</div>
+                            <div>{wardNames.length ?? 0}</div>
+                        </div>
+                        : <div></div>
+                    }
+                
+                
                 </Box>
                 
             </Grid>
@@ -215,14 +235,18 @@ const GetData = (props) =>{
                     
                     padding:"10px"
                 }}>
-                <div>Total No of Wards</div>
-                <div>{wardNames.length ?? 0}</div>
+                <div>Total Area Occupied</div>
+                <div>{Math.round(analysis.areaOccupied)??0} sq m</div> 
                 <br/>
                 <div>Average Density of Population</div>
                 <div>{Math.round(analysis.avgDensity) ?? 0}</div>
                 <br/>
-                <br/>
-                <br/>
+                {
+                    props.ward === "ALL"
+                    ?<div><br/><br/></div>
+                    :<div></div>
+                }
+                
                 </Box>
                 
             </Grid>
@@ -235,11 +259,11 @@ function WardPage(props){
     return (
         <Box style={{
             backgroundColor:colors.white,
-            marginLeft:"2vh",
-            marginRight:"2vh",
+            // marginLeft:"2vh",
+            // marginRight:"2vh",
             height:"1123px",
             width:"794px"
-        }}>
+        }} className="page">
             <Grid container justifyContent={"space-evenly"}>
             <GetData ward={props.ward}></GetData>
             
@@ -284,13 +308,10 @@ function WardPage(props){
 
 function ReportTemplate(){
     useEffect(() => {},[wardNames]);
-    // GetData("ALL");
     fetchData();
-    // var wardNames = wards.keys();
     return(
         <div id="template" style={{marginTop:"15vh",marginLeft:"auto", marginRight:"auto"}}>
             <WardPage ward={"ALL"}></WardPage>
-            
             {wardNames.map((ward) => (
                 <WardPage ward={ward}></WardPage>
             ))}
