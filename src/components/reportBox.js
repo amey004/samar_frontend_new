@@ -74,8 +74,8 @@ function ReportBox(){
             <Box
               style={{
                 backgroundColor: "#EEF0F2",
-                height: "85vh",
-                marginTop: "15vh",
+                height: "80vh",
+                marginTop: "12vh",
                 marginBottom: "2vh",
                 borderRadius: "15px",
                 marginLeft: "auto",
@@ -86,8 +86,7 @@ function ReportBox(){
                 paddingRight: "2vw",
               }}
             >
-              <div>Saw any misconduct happening around you?</div>
-              <div>REPORT HERE</div>
+              <div style={{fontSize:"25px"}}>Post Your Grievance</div>
               <div
                 style={{
                   marginLeft: "1vh",
@@ -122,11 +121,13 @@ function ReportBox(){
                 onChange={(e) => setemail(e.target.value)}
                 style={{
                   margin: "1vh",
+                  
                 }}
               />
               <div
                 style={{
                   marginLeft: "1vh",
+                  
                 }}
               >
                 Project Name
@@ -141,8 +142,8 @@ function ReportBox(){
                 onChange={(e) => {handleChange(e)}}
                 style={{
                   margin: "1vh",
-                  height: "40px",
-                  width: "200px",
+                  height: "3vh",
+                  width: "14vw",
                 }}
               >
                 {projects.map((e, key) => (
@@ -174,9 +175,10 @@ function ReportBox(){
               <div
                 style={{
                   marginLeft: "1vh",
+                  display:"inline",
                 }}
               >
-                Explain in detail
+                <p>Grievance Details</p>
               </div>
               <TextField
                 hiddenLabel
@@ -187,7 +189,7 @@ function ReportBox(){
                 value={detail}
                 onChange={(e) => setdetail(e.target.value)}
                 style={{
-                  marginTop: "1vh",
+                  marginTop: "0.5vh",
                   width: "70%",
                   marginLeft: "7px",
                 }}
@@ -202,7 +204,7 @@ function ReportBox(){
                     backgroundColor: "#197278",
                     color: "#FFFFFF",
                     margin: "2vw",
-                    marginBottom: "1vw",
+                    marginBottom: "1vh",
                     marginLeft: "5vw",
                     fontSize: "small",
                   }}

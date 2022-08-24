@@ -310,7 +310,7 @@ function ReportTemplate(){
     useEffect(() => {},[wardNames]);
     fetchData();
     return(
-        <div id="template" style={{marginTop:"15vh",marginLeft:"auto", marginRight:"auto"}}>
+        <div id="template" style={{marginTop:"15vh"}}>
             <WardPage ward={"ALL"}></WardPage>
             {wardNames.map((ward) => (
                 <WardPage ward={ward}></WardPage>

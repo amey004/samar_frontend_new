@@ -15,12 +15,12 @@ function NewsCarousel() {
     {
       image: temp_img2,
       description:
-        "Over 15 years later, Pimpri-Chinchwad’s slum-free plan remains a non-starter",
+        "The urban people residing in slum areas are socially, economically and physically most vulnerable than other people of the urban environment.",
     },
   ];
   return (
     <>
-      <div style={{marginTop:"12vh"}}>
+      <div style={{marginTop:"9vh"}}>
         <Carousel className="carousel">
           {items.map((item, i) => (
             <Box component="span">
