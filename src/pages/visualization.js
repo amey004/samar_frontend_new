@@ -8,6 +8,7 @@ import {Household} from "./Charts/household";
 import {Status} from "./Charts/status";
 import {Tenability} from "./Charts/tenability";
 import {Wardcount} from "./Charts/wardwisecount"
+import "./App.css"
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -29,66 +30,73 @@ function Visualize(props){
           Map
         </Box> */}
         <Box sx={{ flexGrow: 1 }} paddingBottom={"5vh"}>
-
           <Grid container justifyContent={"space-evenly"} spacing={3}>
-          
-            <Grid item sm={12} md={4}>
+            <Grid item sm={12} md={4} className="chart-div">
               <Item>
-              {props.ward === "ALL" || props.ward === ""
-                ? <h6>Wardwise Slum Households</h6>
-              : <h6>Slum Households for Ward <br/> {props.ward}</h6>
-              }
-                <Household  ward={props.ward}/>
+                {props.ward === "ALL" || props.ward === "" ? (
+                  <h6>Wardwise Slum Households</h6>
+                ) : (
+                  <h6>
+                    Slum Households for Ward <br /> {props.ward}
+                  </h6>
+                )}
+                <Household ward={props.ward} />
               </Item>
             </Grid>
-            <Grid item sm={12} md={5}>
+            <Grid item sm={12} md={5} className="chart-div">
               <Item>
-                {props.ward === "ALL" || props.ward === ""
-                ? <h6>Wardwise Slum Count</h6>
-              : <h6>Slum Count for Ward <br/> {props.ward}</h6>
-              }
-              
+                {props.ward === "ALL" || props.ward === "" ? (
+                  <h6>Wardwise Slum Count</h6>
+                ) : (
+                  <h6>
+                    Slum Count for Ward <br /> {props.ward}
+                  </h6>
+                )}
+
                 <div
                   style={{
                     marginTop: "-10%",
-                    marginBottom:"-10%",
+                    marginBottom: "-10%",
                   }}
                 >
-                <Wardcount ward={props.ward}/>
+                  <Wardcount ward={props.ward} />
                 </div>
               </Item>
             </Grid>
-            
-            <Grid item sm={12} md={4}>
+
+            <Grid item sm={12} md={4} className="chart-div">
               <Item>
-              {props.ward === "ALL" || props.ward === ""
-                ? <h6>Wardwise Tenability</h6>
-              : <h6>Tenability for Ward <br/> {props.ward}</h6>
-              }
+                {props.ward === "ALL" || props.ward === "" ? (
+                  <h6>Wardwise Tenability</h6>
+                ) : (
+                  <h6>
+                    Tenability for Ward <br /> {props.ward}
+                  </h6>
+                )}
                 <div style={{ height: "50%" }}>
-                  <Tenability ward={props.ward}/>
+                  <Tenability ward={props.ward} />
                 </div>
               </Item>
             </Grid>
-            <Grid item sm={12} md={6}>
+            <Grid item sm={12} md={6} className="chart-div">
               <Item>
-              {props.ward === "ALL" || props.ward === ""
-                ? <h6>Wardwise Slum Status</h6>
-              : <h6>Slum Status for Ward <br/> {props.ward}</h6>
-              }
+                {props.ward === "ALL" || props.ward === "" ? (
+                  <h6>Wardwise Slum Status</h6>
+                ) : (
+                  <h6>
+                    Slum Status for Ward <br /> {props.ward}
+                  </h6>
+                )}
                 <div
                   style={{
                     marginTop: "-17%",
-                    marginBottom:"-10%",
+                    marginBottom: "-10%",
                   }}
                 >
-                  <Status  ward={props.ward}/>
+                  <Status ward={props.ward} />
                 </div>
-                
               </Item>
             </Grid>
-            
-           
           </Grid>
         </Box>
       </div>

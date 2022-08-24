@@ -80,7 +80,7 @@ function GovernmentDashboard(){
       }).then((res) => {
         for(var i of res) {
             if (!wards.includes(i.WARD_2017)) {
-              wards.push(i.WARD_2017);
+              setWards([...wards, i.WARD_2017]);
             }
           }
           console.log(wards);
@@ -90,64 +90,67 @@ function GovernmentDashboard(){
       })
     };
 
-    useEffect(()=>{},[ward, wards]);
+    useEffect(()=>{getData();},[ward,wards]);
 
 
-    getData();
+    
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
+        <h1
+          className="heading-stat"
+          style={{
+            fontWeight: "500",
+            marginTop: "1vh",
+            marginLeft: "4vw",
+            marginBottom: "1vh",
+          }}
+        >
+          Statistics
+        </h1>
         <Grid container justifyContent={"space-evenly"}>
-            <h1
-              className="heading-stat"
-              style={{
-                fontWeight: "500",
-                marginTop: "1vh",
-                marginLeft: "4vw",
-                marginBottom: "1vh",
-              }}
-            >
-              Statistics
-            </h1>
-          <Grid item xs={5}>
-          <Select value={ward} label={"Select Ward"} 
-              onChange={handleChange}
+          <Grid item xs={12} md={5}  style={{ marginLeft: "auto" }} className="heading-stat">
+            <label style={{ marginRight: "20px" }}>Select ward: </label>
+            <Select
               placeholder="Select a ward"
-              style={{backgroundColor: "#FFFFFF",
-                  color: "#197278",
-                  marginTop: "2vh",
-                  marginLeft: "20vw",
-                  marginBottom: "2vh",}}>
+              value={ward}
+              label={"Select Ward"}
+              onChange={handleChange}
+              style={{
+                backgroundColor: "#FFFFFF",
+                minWidth:"100px",
+                color: "#197278",
+                marginTop: "2vh",
+                marginBottom: "2vh",
+              }}
+              autoWidth={true}
+            >
               {wards.map((e) => (
-                 <MenuItem value={e} key={e}>{e}</MenuItem>
+                <MenuItem value={e} key={e}>
+                  {e}
+                </MenuItem>
               ))}
             </Select>
           </Grid>
-          <Grid item xs={5}>
-            <Link to="/detailed-report" style={{textDecoration:"none"}}>
-            <Button
+          <Grid item md={5} sm={12}>
+            <Link to="/detailed-report" style={{ textDecoration: "none" }}>
+              <Button
                 className="button-detail"
                 style={{
                   backgroundColor: "#197278",
                   color: "#FFFFFF",
                   marginTop: "2vh",
-                  marginLeft: "25vw",
+                  marginLeft: "16vw",
                   marginBottom: "2vh",
                 }}
               >
-                <div>
-                View Detailed Report
-                </div>
-                
-              </Button> 
+                <div>View Detailed Report</div>
+              </Button>
             </Link>
-         
           </Grid>
-          <Grid item xs = {11}>
-            <Visualize ward = {ward}/>
+          <Grid item xs={11}>
+            <Visualize ward={ward} />
           </Grid>
-          <Grid item xs={12}>
-              
-          </Grid>
+          <Grid item xs={12}></Grid>
           <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Current Projects

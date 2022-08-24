@@ -2,6 +2,9 @@
     height: auto;
   }
 @media only screen and (max-width: 600px) {
+  .chart-div{
+    max-width: 100%;
+  }
    .govtdash{
     margin-top: 35% !important;
   }
@@ -14,5 +17,8 @@
   .carousel{
     overflow-x: hidden;
     height: auto;
+  }
+  .button-detail{
+    margin-left: auto !important;
   }
 }
