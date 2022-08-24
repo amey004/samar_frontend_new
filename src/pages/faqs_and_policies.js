@@ -20,52 +20,52 @@ function FaqsAndPolicies(){
         image:goi,
         launchDate:"25 June 2015"},
         {policyNumber:2,
-            policyName:"Pradhan Mantri Aawas Yojana",
-            details:"The Mission addresses urban housing shortage among the EWS/LIG and MIG categories including the slum dwellers by ensuring a pucca house to all eligible urban households by the year 2022, when Nation completes 75 years of its Independence.", 
+            policyName:"Rajiv Gandhi Aawas Yojana",
+            details:"The scheme focussed on bringing existing slums within the formal system and enabling them to avail of the same level of basic amenities as the rest of the town/city.Tackling the shortages of urban land and housing that keep shelter out of reach of the urban poor.", 
         ministry:"Government of India", 
-        image:goi,launchDate:"25 June 2015"},
+        image:goi,launchDate:"02 June 2011"},
         {policyNumber:3,
-            policyName:"Pradhan Mantri Aawas Yojana", 
-            details:"The Mission addresses urban housing shortage among the EWS/LIG and MIG categories including the slum dwellers by ensuring a pucca house to all eligible urban households by the year 2022, when Nation completes 75 years of its Independence.",
-        ministry:"Government of Maharashtra", 
-        image:goi,launchDate:"25 June 2015"}
+            policyName:"Interest Subsidy Scheme for Housing the Urban Poor", 
+            details:"To enable the urban poor to obtain the credit for home loans at affordable rates, ISHUP provides 5% interest subsidy on loans up to Rs. 1 Lakh",
+        ministry:"Government of India", 
+        image:goi,launchDate:"26 December 2008"}
     ];
 
     var questions = [
         {   
             questionId:1,
-            heading:"Registration",
-            details:"Eligible citizens can register themselves for the appropriate policy by visiting the nearest Municipal Corporation.",
+            heading:"Registration for developers",
+            details:"Interested developers can register themselves by visiting the nearest Municipal Corporation.",
         },
         {   
             questionId:2,
-            heading:"Am I eligible?",
-            details:"Please click on policy name to know more about the policies",
+            heading:"Which policies am I eligible for?",
+            details:"Please click on policy name to know more about the policies.",
         },  
         {   
             questionId:3,
             heading:"Where to report misconducts?",
-            details:"There is a special section for reporting any misconduct observed. You can find it in the navbar",
+            details:"There is a special section(Grievance Redressal) for reporting any misconduct observed. You can find it in the navbar.",
         },
         {   
             questionId:4,
-            heading:"Registration",
-            details:"Eligible citizens can register themselves for the appropriate policy by visiting the nearest Municipal Corporation.",
+            heading:"What after reporting?",
+            details:"The concerned authorities will be notified about your grievances and will take the appropriate action.",
         },
         {   
             questionId:5,
-            heading:"Am I eligible?",
-            details:"Please click on policy name to know more about the policies",
+            heading:"Am I eligible for the Slum Rehabilitation Program?",
+            details:"Please check with the nearest Municipal Corporation for eligibility criteria details",
         },  
         {   
             questionId:6,
-            heading:"Where to report misconducts?",
-            details:"There is a special section for reporting any misconduct observed. You can find it in the navbar",
+            heading:"What to do in case of denial or delay in service by the developer?",
+            details:"You can report grievances in the Grievance Redressal section.",
         },
     ];
 
     return (
-            <Grid container spacing={2} padding={"2vh"} marginTop={"12vh"}>
+            <Grid container spacing={2} padding={"2vh"} marginTop={"0vh"}>
                 <Grid item padding={"2vh"} xs={6} marginLeft={"3vw"}>
                     <Box className="container-faq">
                         <div style={{

@@ -34,7 +34,7 @@ function NavBar (){
   },[url,role])
     return (
       <div style={{ display: "flex" }}>
-        <Navbar expand="md" style={{ width: "100%" }} fixed="top">
+        <Navbar expand="md" style={{ width: "100%", height:"9vh" }} fixed="top">
           <NavbarToggler className="mr-2" onClick={toggleNav} />
           <NavbarBrand className="" href="/" style={{ width: "100%" }}>
             <div style={{ display: "inline" }}>
@@ -97,7 +97,7 @@ function NavBar (){
                   </NavLink>
                 </NavItem>
               )}
-              <NavItem>
+              <NavItem style={{width:"13vw"}}>
                 <NavLink
                   className="nav-link"
                   exact
@@ -106,7 +106,7 @@ function NavBar (){
                     color: "black",
                   }}
                 >
-                  <h5>Report/Suggest</h5>
+                  <h5>Grievance Redressal</h5>
                 </NavLink>
               </NavItem>
               {loggedIn ? (
