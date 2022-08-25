@@ -1,6 +1,6 @@
 
 import React,{useEffect,useContext, useState} from 'react';
-import slum from '../images/slum1.jpg';
+import  slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
 import { Grid, Button , Select, MenuItem} from '@material-ui/core';
 import { Link } from "react-router-dom";
@@ -9,11 +9,23 @@ import FileUpload from '../components/fileUpload';
 import Visualize from "./visualization.js";
 import AuthContext from '../context/AuthContext';
 import "./App.css"
+import axios from 'axios';
 
-function GovernmentDashboard(){
-    const {role} = useContext(AuthContext)
+const GovernmentDashboard = () => {
+
+    // constructor(props){
+    //   super(props);
+    //   this.state={
+
+    //   }
+    //   this.role = this.role.bind(this);
+    // };
+    const {role} = useContext(AuthContext);
     const [ward,setWard] = useState("");
     const [wards, setWards] = useState(["ALL"]);
+    const [currentProjects1,setcurrentprojects] = useState();
+    const [pastProjects1,setpastprojects] = useState();
+
     // console.log(role)
     var currentProjects = [
         {projectId:1,projectName:'Dhankawadi Towers',image:slum},
@@ -66,6 +78,10 @@ function GovernmentDashboard(){
       setWard(event.target.value);
       // console.log(ward);
     };
+
+    useEffect(()=>{
+      setpastprojects()
+    },[])
     const getData = () =>{
       fetch('./data.json'
         , {
@@ -89,8 +105,27 @@ function GovernmentDashboard(){
         console.log("error", e)
       })
     };
+    getData();
+    const getProjects = async () => {
+      const data1 = await axios.get(
+        "http://localhost:5000/filterdata?table=projects&key=status&value=ongoing"
+      );
+      const data2 = await axios.get(
+        "http://localhost:5000/filterdata?table=projects&key=status&value=completed"
+      );
+      // console.log(data2.data.data)
+      return {'ongoing':data1.data.data,'completed':data2.data.data}
+    };
+    // const temp = getProjects().then((data) => {
+    //   console.log(data);
+    //   return data;
+    // });
+    // setcurrentprojects(temp.ongoing);
+    // setpastprojects(temp.completed);
 
-    useEffect(()=>{getData();},[ward,wards]);
+    // useEffect(() => {
+      
+    // },[]);
 
 
     
@@ -108,7 +143,13 @@ function GovernmentDashboard(){
           Statistics
         </h1>
         <Grid container justifyContent={"space-evenly"}>
-          <Grid item xs={12} md={5}  style={{ marginLeft: "auto" }} className="heading-stat">
+          <Grid
+            item
+            xs={12}
+            md={5}
+            style={{ marginLeft: "auto" }}
+            className="heading-stat"
+          >
             <label style={{ marginRight: "20px" }}>Select ward: </label>
             <Select
               placeholder="Select a ward"
@@ -117,7 +158,7 @@ function GovernmentDashboard(){
               onChange={handleChange}
               style={{
                 backgroundColor: "#FFFFFF",
-                minWidth:"100px",
+                minWidth: "100px",
                 color: "#197278",
                 marginTop: "2vh",
                 marginBottom: "2vh",
@@ -155,13 +196,18 @@ function GovernmentDashboard(){
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Current Projects
             </div>
-            <CarouselCard projectDetails={currentProjects} />
+            <CarouselCard
+              projectDetails={currentProjects}
+              // detail={currentProjects1}
+            />
           </Grid>
           <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Past Projects
             </div>
-            <CarouselCard projectDetails={pastProjects} />
+            <CarouselCard
+              projectDetails={pastProjects}
+            />
           </Grid>
           <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>

@@ -21,7 +21,7 @@ function NewsCarousel() {
   return (
     <>
       <div style={{marginTop:"9vh"}}>
-        <Carousel className="carousel">
+        <Carousel className="carousel" navButtonsAlwaysVisible={true} indicators={false}>
           {items.map((item, i) => (
             <Box component="span">
               <Item key={i} item={item}/>

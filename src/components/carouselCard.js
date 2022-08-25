@@ -31,7 +31,7 @@ function RightArrow() {
 
 
 function CarouselCard(props){
-    // console.log(props.projectDetails);
+    // console.log(props.detail);
     return (
       <div
         style={{

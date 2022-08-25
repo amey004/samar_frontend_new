@@ -18,7 +18,7 @@ function LandingPage() {
     <>
       <div className="home">
         <NewsCarousel />
-        <FaqsAndPolicies />
+        <FaqsAndPolicies/>
       </div>
     </>
   );
