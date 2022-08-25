@@ -175,10 +175,10 @@ function ReportBox(){
               <div
                 style={{
                   marginLeft: "1vh",
-                  display:"inline",
+          
                 }}
               >
-                <p>Grievance Details</p>
+              Grievance Details
               </div>
               <TextField
                 hiddenLabel
@@ -189,9 +189,8 @@ function ReportBox(){
                 value={detail}
                 onChange={(e) => setdetail(e.target.value)}
                 style={{
-                  marginTop: "0.5vh",
+                  margin: "1vh",
                   width: "70%",
-                  marginLeft: "7px",
                 }}
               />
               <div>
