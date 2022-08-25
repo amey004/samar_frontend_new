@@ -173,17 +173,32 @@ function GovernmentDashboard(){
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>Notices</div>
             <Notices notices={noticesList} />
           </Grid>
+          <Grid item md={8}>
+            <div
+            style={{
+              fontWeight: "500",
+              marginTop: "1vh",
+              marginLeft: "4vw",
+              marginBottom: "1vh",
+            }}
+          >
+            Add More Data
+          </div>
+          </Grid>
+          <Grid item md={3}>
+            <Link to="/documents/UploadDataSample.xlsx" target={"_blank"} download>
+            <div style={{
+              marginTop: "1vh",
+              marginLeft: "4vw",
+              marginBottom: "1vh",
+            }}>Download Sample Template</div>
+            </Link>
+            
+            
+          </Grid>
         </Grid>
-        <div
-          style={{
-            fontWeight: "500",
-            marginTop: "1vh",
-            marginLeft: "4vw",
-            marginBottom: "1vh",
-          }}
-        >
-          Add More Data
-        </div>
+        
+        
         <FileUpload />
       </div>
     );

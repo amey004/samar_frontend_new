@@ -11,7 +11,6 @@ function ViewReport(){
     
     const createPDF = async () => {
     const pdf = new jsPDF("portrait", "px", "a4");
-    // const data = await html2canvas(document.querySelector("#template"));
     var pages = document.getElementsByClassName("page");
     console.log(pages.length);
     for(var i=0;i<pages.length;i++){
@@ -19,14 +18,11 @@ function ViewReport(){
         const img = data.toDataURL("image/png");  
         const imgProperties = pdf.getImageProperties(img);
         const pdfWidth = pdf.internal.pageSize.getWidth();
-        // const pdfHeight = pdf.internal.pageSize.getHeight();
-        // pdf.context2d.pageWrapYEnabled = true;
         const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
         pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
-        if(i!=pages.length-1){
+        if(i!==pages.length-1){
             pdf.addPage();
         }
-        
     }
     
     pdf.save("sample.pdf");
