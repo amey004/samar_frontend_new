@@ -35,11 +35,11 @@ function ViewReport(){
        
     return (
         <div style={{marginTop:"10vh"}}>
-            
-            <ReportTemplate/>
-            <Box style={{marginLeft:'80vw'}}>
-                <Button onClick={createPDF}>Download PDF Report</Button> 
+            <Box style={{marginLeft:"85vw", backgroundColor:"#197278", color:"white", borderRadius:"8px", alignItems:"center", justifyContent:"center", width:"13.5vw"}}>
+                <Button style={{color:"white"}} onClick={createPDF}>Download PDF Report</Button> 
             </Box>
+            <ReportTemplate/>
+            
         </div>
     );
 }
@@ -89,10 +89,6 @@ const fetchData = () => {
 }
 
 const GetData = (props) =>{
-    // var wards = {};
-    // // var wardNames = [];
-    // var slums = [];
-    // var analysis = {};
     const [wards,setWards] = useState({});
     const [slums,setSlums] = useState([]);
     const [analysis,setAnalysis] = useState({
@@ -144,9 +140,11 @@ const GetData = (props) =>{
               }
               console.log(slums.length);
               setAnalysis(analysis);
+              console.log(analysis);
         }
         else{
             const filteredRes = res.filter(filterWard);
+            console.log(filteredRes.length);
             for(var i of filteredRes) {
                 slums.push(i.SLUM_NAME);
                 if(!isNaN(i.APPROX_HH)){
@@ -168,9 +166,7 @@ const GetData = (props) =>{
                 else{
                     wards[i.WARD_2017].push(i);
                 }
-                // if(!wardNames.includes(i.WARD_2017)){
-                //     wardNames.push(i.WARD_2017);
-                // }
+                // console.log(analysis);
                 
               }
         }
@@ -182,25 +178,42 @@ const GetData = (props) =>{
       console.log("error", e)
     })
     useEffect(()=>{},[analysis,slums,wards]);
+    console.log(analysis);
     return (
+        
         <Grid container>
+            {props.ward === "ALL" 
+            ?
             <Grid item md={6}>
-                <Box style={{backgroundColor:colors.pinkLight, padding:"10px", border:"1px solid #f1747d"}}>
+            <Box style={{backgroundColor:colors.pinkLight, padding:"10px", border:"1px solid #f1747d", height:"22vh"}}>
+                <div padding={"2vh"}>Report analysis of</div>
+                <div  padding={"2vh"} height={"20vh"} width={"30vh"} style={styles.largeHeading}>
+                    {props.ward === "ALL" ? "PMC DATA 2017": props.ward}
+                </div>
+            </Box> 
+            </Grid>
+             :
+             <Grid item md={12}>
+                <Box style={{backgroundColor:colors.pinkLight, padding:"10px", border:"1px solid #f1747d", height:"22vh"}}>
                     <div padding={"2vh"}>Report analysis of</div>
-                    <div  padding={"2vh"} height={"20vh"} width={"30vh"} style={styles.largeHeading}>
-                        {props.ward === "ALL" ? "PMC DATA 2017": props.ward}</div>
-                        {props.ward === "ALL" ? <div><br/><br/></div> : <div/>}
+                    <div  padding={"2vh"} height={"20vh"}  style={styles.largeHeading}>
+                        {props.ward}
+                    </div>
                 </Box> 
                 </Grid>
+                }
+            {props.ward === "ALL" ?
             <Grid item md={6}>
-                    <Box style={{backgroundColor:colors.blueLight, padding:"10px", border:"1px solid #478e93"}}>
-                        <div>Total count of slums</div>
-                        <div height={"20vh"} width={"30vh"} style={styles.largeHeading}>{slums.length ?? 0}</div>
-                        <br/>
-                        <br/>
-                    </Box>
-            </Grid>
-            <Grid item md={6}>
+            <Box style={{backgroundColor:colors.blueLight, padding:"10px", border:"1px solid #478e93", height:"22vh"}}>
+                <div>Total count of slums</div>
+                <div height={"20vh"} width={"30vh"} style={styles.largeHeading}>{slums.length ?? 0}</div>
+                <br/>
+                <br/>
+            </Box>
+    </Grid>
+    :<div></div>}
+            
+            {props.ward === "ALL" ? <Grid item md={6}>
             <Box style={{
                     justifyContent:"center",
                     backgroundColor:colors.blueDark,
@@ -226,7 +239,8 @@ const GetData = (props) =>{
                 
                 </Box>
                 
-            </Grid>
+            </Grid>:<div></div>}
+            {props.ward === "ALL" ?
             <Grid item md={6}>
             <Box style={{
                     justifyContent:"center",
@@ -250,6 +264,8 @@ const GetData = (props) =>{
                 </Box>
                 
             </Grid>
+            :<div></div>}
+            
         </Grid>
     );
   };
@@ -310,12 +326,15 @@ function ReportTemplate(){
     useEffect(() => {},[wardNames]);
     fetchData();
     return(
-        <div id="template" style={{marginTop:"15vh"}}>
-            <WardPage ward={"ALL"}></WardPage>
-            {wardNames.map((ward) => (
-                <WardPage ward={ward}></WardPage>
-            ))}
-        </div>
+        <Grid container justifyContent="space-evenly">
+            <div id="template">
+                <WardPage ward={"ALL"}></WardPage>
+                {wardNames.map((ward) => (
+                    <WardPage ward={ward}></WardPage>
+                ))}
+            </div>
+        </Grid>
+        
     );
 }
 

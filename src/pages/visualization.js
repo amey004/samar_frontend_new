@@ -78,7 +78,7 @@ function Visualize(props){
                 </div>
               </Item>
             </Grid>
-            <Grid item sm={12} md={6} className="chart-div">
+            <Grid item sm={12} md={5} className="chart-div">
               <Item>
                 {props.ward === "ALL" || props.ward === "" ? (
                   <h6>Wardwise Slum Status</h6>
