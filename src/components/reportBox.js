@@ -68,25 +68,23 @@ function ReportBox(){
       fetchData();
     }, [project,name,email,subject,detail]);
     return (
-      <>
-        <Grid container justifyContent={"space-evenly"}>
-          <Grid className="boxes" item sm={11} md={4}>
-            <Box
-              style={{
-                backgroundColor: "#EEF0F2",
-                height: "80vh",
-                marginTop: "12vh",
-                marginBottom: "2vh",
-                borderRadius: "15px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                width: "90%",
-                padding: "10px",
-                paddingLeft: "2vw",
-                paddingRight: "2vw",
-              }}
-            >
-              <div style={{fontSize:"25px"}}>Post Your Grievance</div>
+      <Box style={{
+        backgroundColor: "#EEF0F2",
+        height: "80vh",
+        marginTop: "12vh",
+        marginBottom: "2vh",
+        borderRadius: "15px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        // width: "90%",
+        justifyContent:"space-evenly",
+        padding: "10px",
+        paddingLeft: "2vw",
+        paddingRight: "2vw",
+      }}>
+            <Grid container>
+              <Grid item md={5}>
+              <div style={{fontSize:"20px"}}>Post Your Grievance</div>
               <div
                 style={{
                   marginLeft: "1vh",
@@ -211,9 +209,16 @@ function ReportBox(){
                   Report
                 </Button>
               </div>
-            </Box>
-          </Grid>
-        </Grid>
+              </Grid>
+              <Grid item md={2} style={{marginTop:"auto", marginBottom:"auto"}}>OR</Grid>
+              <Grid item md={5} style={{marginTop:"auto", marginBottom:"auto"}}>
+                <div justifyContent={"center"}>
+                  <div style={{ fontSize:"20px", marginBottom:"1vh"}}>Helpline Number</div>
+                  <div style={{margin:"1vh"}}>For any grievances, call on</div>
+                  <div style={{margin:"1vh", fontSize:"30px",opacity:"0.75", color:"red", fontWeight:"500"}}>020 2400 2400</div>
+                </div>
+                </Grid>
+            </Grid>
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -225,7 +230,7 @@ function ReportBox(){
           draggable
           theme='dark'
         />
-      </>
+      </Box>
     );
 }
 
