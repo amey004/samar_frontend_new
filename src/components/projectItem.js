@@ -26,7 +26,7 @@ function ProjectItem(props){
         >
           <CardMedia component="img" image={props.data.image} height="100%"/>
         </Box>
-        <div style={{ fontSize: "12px" }}>{props.data.name}</div>
+        <div style={{ fontSize: "12px" }}>{props.data.projectName}</div>
       </Card>
     );
 }
