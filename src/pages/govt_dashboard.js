@@ -2,7 +2,7 @@
 import React,{useEffect,useContext, useState} from 'react';
 import  slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid, Button , Select, MenuItem} from '@material-ui/core';
+import { Grid, Button , Select, MenuItem,InputLabel, Hidden} from '@material-ui/core';
 import { Link } from "react-router-dom";
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
@@ -11,19 +11,18 @@ import AuthContext from '../context/AuthContext';
 import "./App.css"
 import axios from 'axios';
 import MapBox from '../components/mapbox';
+import { Container } from 'reactstrap';
+import ReactScoreIndicator from 'react-score-indicator';
 
 const GovernmentDashboard = () => {
 
-    // constructor(props){
-    //   super(props);
-    //   this.state={
-
-    //   }
-    //   this.role = this.role.bind(this);
-    // };
     const {role} = useContext(AuthContext);
     const [ward,setWard] = useState("");
     const [wards, setWards] = useState(["ALL"]);
+    const [ssiward,setssiward] = useState();
+    const [ssislums,setssislums] = useState([]);
+    const [ssislum,setssislum] = useState("");
+    const [visibility,setvisibility] = useState(false);
     const [currentProjects1,setcurrentprojects] = useState();
     const [pastProjects1,setpastprojects] = useState();
 
@@ -80,9 +79,15 @@ const GovernmentDashboard = () => {
       // console.log(ward);
     };
 
-    useEffect(()=>{
-      setpastprojects()
-    },[])
+    var ssislums1 = [
+      {slum_name:"",slum_code:""},
+      { slum_name: "DEVKAR VASTI RAMWADI YERAWADA", slum_code: "1201010501" },
+      { slum_name: "RAMABAI AMBEDKAR NAGAR", slum_code: "1201020104" },
+      { slum_name: "CHAVAN CHAWL KALAS", slum_code: "1201020103" },
+      { slum_name: "SRAMIK VASAHAT YERAWADA", slum_code: "1201020215" },
+      { slum_name: "PANMALA TADIWALA ROAD",slum_code:"1201032011"}
+    ];
+    
     const getData = () =>{
       fetch('./data.json'
         , {
@@ -127,14 +132,132 @@ const GovernmentDashboard = () => {
     // useEffect(() => {
       
     // },[]);
+    const handleWardChange = async (e) => {
+      setssiward(e.target.value);
+      // const data = await axios.get(
+      //   `http://localhost:5000/slumfilterdata?key=ward&value=${e.target.value}`
+      // );
+      // console.log(data.data);
+      // setssislums(data.data.data)
+      
+    }
+    const handleClick = (e) => {
+        console.log("Clicked!")
+        setvisibility(true);
+        
+    }
 
-
-    
+    useEffect(()=>{
+      setpastprojects()
+    },[ssiward,ssislums,ssislum,visibility])
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
-        <Grid item xs={12} md={11}>
-            <MapBox/>
+          <Grid item xs={12} md={11}>
+            <MapBox />
+          </Grid>
+          <h1
+            style={{
+              fontWeight: "500",
+              marginTop: "6vh",
+              marginBottom: "1vh",
+            }}
+            className="heading-stat"
+          >
+            Slum Index
+          </h1>
+          <Grid item xs={12}>
+            <Grid
+              container
+              justifyContent={"space-evenly"}
+              style={{ marginTop: "30px", marginBottom: "50px" }}
+            >
+              <Grid
+                item
+                sm={6}
+                md={4}
+                alignItems="center"
+                justifyContent="center"
+                style={{ marginLeft: "20%" }}
+              >
+                <label id="demo-simple-select-label">Ward: </label>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={ssiward}
+                  onChange={handleWardChange}
+                  label="wards"
+                  style={{
+                    minWidth: "100px",
+                  }}
+                  autoWidth={true}
+                >
+                  {wards.map((e) => (
+                    <MenuItem value={e} key={e}>
+                      {e}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+              <Grid item sm={6} md={4}>
+                <label id="demo-simple-select-label">Slum: </label>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  onChange={(e) => {
+                    setssislum(e.target.value);
+                  }}
+                  value={ssislum}
+                  label="slums"
+                  style={{
+                    minWidth: "100px",
+                  }}
+                  autoWidth={true}
+                >
+                  {ssislums1.map((e) => (
+                    <MenuItem value={e.slum_code} key={e.slum_name}>
+                      {e.slum_name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+              <Grid item xs={12} justifyContent="center" alignItems="center">
+                <div>
+                  <Button
+                    variant="contained"
+                    onClick={handleClick}
+                    style={{
+                      backgroundColor: "#197278",
+                      color: "white",
+                      justifyItems: "center",
+                      marginLeft: "47%",
+                      marginTop: "3%",
+                      marginBottom: "50px",
+                    }}
+                  >
+                    Calculate
+                  </Button>
+                </div>
+              </Grid>
+              {visibility && (
+                <ReactScoreIndicator
+                  value={7.34}
+                  maxValue={10}
+                  lineWidth={10}
+                  colors={[
+                    "#3da940",
+                    "#3da940",
+                    "#3da940",
+                    "#84c42b",
+                    "#f1bc00",
+                    "#ed8d00",
+                    "#d12000",
+                    "#53b83a",
+                  ]}
+                  style={{ maringTop: "30px" }}
+                />
+              )}
+            </Grid>
           </Grid>
           <Grid
             item
@@ -144,16 +267,15 @@ const GovernmentDashboard = () => {
             className="heading-stat"
           >
             <h1
-          className="heading-stat"
-          style={{
-            fontWeight: "500",
-            marginTop: "1vh",
-            marginLeft: "2vw",
-            marginBottom: "1vh",
-          }}
-        >
-          Statistics
-        </h1>
+              className="heading-stat"
+              style={{
+                fontWeight: "500",
+                marginTop: "1vh",
+                marginBottom: "1vh",
+              }}
+            >
+              Statistics
+            </h1>
             <label style={{ marginRight: "20px" }}>Select ward: </label>
             <Select
               placeholder="Select a ward"
@@ -209,9 +331,7 @@ const GovernmentDashboard = () => {
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
               Past Projects
             </div>
-            <CarouselCard
-              projectDetails={pastProjects}
-            />
+            <CarouselCard projectDetails={pastProjects} />
           </Grid>
           <Grid item md={5} className="carousel">
             <div style={{ fontWeight: "500", marginTop: "1vh" }}>
@@ -225,30 +345,35 @@ const GovernmentDashboard = () => {
           </Grid>
           <Grid item md={8}>
             <div
-            style={{
-              fontWeight: "500",
-              marginTop: "1vh",
-              marginLeft: "4vw",
-              marginBottom: "1vh",
-            }}
-          >
-            Add More Data
-          </div>
+              style={{
+                fontWeight: "500",
+                marginTop: "1vh",
+                marginLeft: "4vw",
+                marginBottom: "1vh",
+              }}
+            >
+              Add More Data
+            </div>
           </Grid>
           <Grid item md={3}>
-            <Link to="/documents/UploadDataSample.xlsx" target={"_blank"} download>
-            <div style={{
-              marginTop: "1vh",
-              marginLeft: "4vw",
-              marginBottom: "1vh",
-            }}>Download Sample Template</div>
+            <Link
+              to="/documents/UploadDataSample.xlsx"
+              target={"_blank"}
+              download
+            >
+              <div
+                style={{
+                  marginTop: "1vh",
+                  marginLeft: "4vw",
+                  marginBottom: "1vh",
+                }}
+              >
+                Download Sample Template
+              </div>
             </Link>
-            
-            
           </Grid>
         </Grid>
-        
-        
+
         <FileUpload />
       </div>
     );
