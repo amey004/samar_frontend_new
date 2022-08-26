@@ -24,7 +24,7 @@ function ProjectItem(props){
             borderRadius: "7px",
           }}
         >
-          <CardMedia component="img" image={props.data.image} height="100%"/>
+          <CardMedia component="img" image={props.data.image} height="100%" style={{borderRadius:"7px", objectFit:"cover"}}/>
         </Box>
         <div style={{ fontSize: "12px" }}>{props.data.name}</div>
       </Card>

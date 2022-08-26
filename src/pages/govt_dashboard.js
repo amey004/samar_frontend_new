@@ -10,6 +10,7 @@ import Visualize from "./visualization.js";
 import AuthContext from '../context/AuthContext';
 import "./App.css"
 import axios from 'axios';
+import MapBox from '../components/mapbox';
 
 const GovernmentDashboard = () => {
 
@@ -131,18 +132,10 @@ const GovernmentDashboard = () => {
     
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
-        <h1
-          className="heading-stat"
-          style={{
-            fontWeight: "500",
-            marginTop: "1vh",
-            marginLeft: "4vw",
-            marginBottom: "1vh",
-          }}
-        >
-          Statistics
-        </h1>
         <Grid container justifyContent={"space-evenly"}>
+        <Grid item xs={12} md={11}>
+            <MapBox/>
+          </Grid>
           <Grid
             item
             xs={12}
@@ -150,6 +143,17 @@ const GovernmentDashboard = () => {
             style={{ marginLeft: "auto" }}
             className="heading-stat"
           >
+            <h1
+          className="heading-stat"
+          style={{
+            fontWeight: "500",
+            marginTop: "1vh",
+            marginLeft: "2vw",
+            marginBottom: "1vh",
+          }}
+        >
+          Statistics
+        </h1>
             <label style={{ marginRight: "20px" }}>Select ward: </label>
             <Select
               placeholder="Select a ward"
