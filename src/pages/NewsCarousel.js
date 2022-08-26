@@ -4,6 +4,7 @@ import temp_img2 from "../images/temp_img2.png";
 import Carousel from "react-material-ui-carousel";
 import { Box } from "@material-ui/core";
 import { Container } from "reactstrap";
+import "./App.css"
 
 function NewsCarousel() {
   var items = [
@@ -35,9 +36,9 @@ function NewsCarousel() {
 
 function Item(props) {
   return (
-    <div style={{position: 'relative'}}>
+    <div style={{ position: "relative" }}>
       <img src={props.item.image} alt="" className="carousel-img"></img>
-      <div className="textbox">{props.item.description}</div>
+      <div className="textbox car-sm">{props.item.description}</div>
     </div>
   );
 }

@@ -244,4 +244,12 @@ code {
   .navbar-heading2{
     display: inline-block !important;
   }
+  .sm-drop{
+    margin-left:115px !important;
+    margin-top: 30px !important;
+  }
+  .sm-button{ 
+    margin-left: -80px !important;
+    margin-top: 20px !important;
+  }
 }

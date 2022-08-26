@@ -21,13 +21,16 @@ function ReportBox(){
 
     const sendData = async () =>{
       try {
-        const data = await axios.post("http://localhost:5000/report", {
-          project,
-          name,
-          email,
-          subject,
-          detail
-        });
+        const data = await axios.post(
+          "https://samarserver.herokuapp.com/report",
+          {
+            project,
+            name,
+            email,
+            subject,
+            detail,
+          }
+        );
         console.log(data.status);
         if (data.status === 200) {
           toast.success("Grievance reported successfully!", {
@@ -61,7 +64,9 @@ function ReportBox(){
       };
     useEffect(() => {
       const  fetchData = async () =>{
-          var data = await axios.get("http://localhost:5000/fetchdata?table=projects");
+          var data = await axios.get(
+            "https://samarserver.herokuapp.com/fetchdata?table=projects"
+          );
           console.log(data.data);
           setProjects(data.data);
       }

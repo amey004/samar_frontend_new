@@ -55,7 +55,7 @@ function MapBox(){
     useEffect(() => {}, [slumStyle]);
 
     return (<div>
-        <MapContainer style={{height: "80vh", width:"90vw"}} center={[18.5,73.9]}  zoom={12} >
+        <MapContainer style={{height: "80vh", width:"90vw"}} center={[18.5,73.9]}  zoom={12} className="sm-map">
             <GeoJSON style={slumStyle} data= {slumData} onEachFeature={onEachSlum} />
                 <TileLayer 
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

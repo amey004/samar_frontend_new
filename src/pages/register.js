@@ -33,7 +33,7 @@ function Register(){
       try {
         console.log(username, email, password, category);
         console.log(process.env.REACT_APP_SERVER_URL);
-        await axios.post("http://localhost:5000/user/signup", {
+        await axios.post("https://samarserver.herokuapp.com/user/signup", {
           username,
           email,
           password,

@@ -21,4 +21,30 @@
   .button-detail{
     margin-left: auto !important;
   }
+  .login-sm{
+    margin-top: 250px;
+    width: 90%;
+    height: 300px;
+  }
+  .lottie-sm{
+    display: none;
+  }
+  .text-sm{
+    width: 80%;
+    margin-top: 15px;
+  }
+  .button-sm{
+    /* margin-left: 30px; */
+    margin: auto;
+  }
+  .map-sm{
+    margin-top: 100px !important;
+  }
+  .car-sm{
+    width: 60%;
+    margin-left: 120px;
+  }
+  .grid-sm{
+    display: none !important;
+  }
 }

@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {Alert} from "reactstrap"
 import AuthContext from "../context/AuthContext";
+import "./App.css";
 
 axios.defaults.withCredentials = true;
 function Login() {
@@ -41,7 +42,7 @@ function Login() {
     try {
       console.log(email, password, category);
       console.log(process.env.REACT_APP_SERVER_URL);
-      await axios.post("http://localhost:5000/user/signin", {
+      await axios.post("https://samarserver.herokuapp.com/user/signin", {
         email,
         password,
         category,
@@ -64,7 +65,7 @@ function Login() {
   useEffect(() => {}, [category, status,error]);
 
   return (
-    <div className="login-box">
+    <div className="login-box login-sm">
       <div classname="row-login">
         <div
           style={{
@@ -116,9 +117,8 @@ function Login() {
           >
             Developer
           </ToggleButton>
-          
         </ToggleButtonGroup>
-        <div className="textfield">
+        <div className="textfield text-sm">
           <TextField
             id="email"
             label="Enter Email Id"
@@ -138,7 +138,7 @@ function Login() {
             size="small"
           ></TextField>
         </div>
-        <div className="textfield">
+        <div className="textfield text-sm">
           <TextField
             id="password"
             label="Password"
@@ -166,6 +166,7 @@ function Login() {
           </>
         )}
         <Button
+          className="button-sm"
           variant="contained"
           style={{
             borderRadius: "1.3vw",
@@ -182,6 +183,7 @@ function Login() {
           Login
         </Button>
         <div
+          className="button-sm"
           style={{
             textTransform: "capitalize",
             color: "black",
@@ -193,7 +195,7 @@ function Login() {
           Forgot Password?
         </div>
       </div>
-      <div classname="row-login">
+      <div classname="row-login" className="lottie-sm">
         <Lottie options={defaultOptions} height={"20vw"} width={"25vw"} />
       </div>
     </div>

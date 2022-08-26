@@ -2,7 +2,7 @@
 import React,{useEffect,useContext, useState} from 'react';
 import  slum from '../images/slum1.jpg';
 import CarouselCard from '../components/carouselCard.js';
-import { Grid, Button , Select, MenuItem,InputLabel, Hidden} from '@material-ui/core';
+import { Grid, Button , Select, MenuItem,Card,CardContent,Typography,Box} from '@material-ui/core';
 import { Link } from "react-router-dom";
 import Notices from '../components/noticesCard';
 import FileUpload from '../components/fileUpload';
@@ -11,7 +11,6 @@ import AuthContext from '../context/AuthContext';
 import "./App.css"
 import axios from 'axios';
 import MapBox from '../components/mapbox';
-import { Container } from 'reactstrap';
 import ReactScoreIndicator from 'react-score-indicator';
 
 const GovernmentDashboard = () => {
@@ -25,6 +24,7 @@ const GovernmentDashboard = () => {
     const [visibility,setvisibility] = useState(false);
     const [currentProjects1,setcurrentprojects] = useState();
     const [pastProjects1,setpastprojects] = useState();
+    const [index,setindex] = useState();
 
     // console.log(role)
     var currentProjects = [
@@ -114,10 +114,10 @@ const GovernmentDashboard = () => {
     getData();
     const getProjects = async () => {
       const data1 = await axios.get(
-        "http://localhost:5000/filterdata?table=projects&key=status&value=ongoing"
+        "https://samarserver.herokuapp.com/filterdata?table=projects&key=status&value=ongoing"
       );
       const data2 = await axios.get(
-        "http://localhost:5000/filterdata?table=projects&key=status&value=completed"
+        "https://samarserver.herokuapp.com/filterdata?table=projects&key=status&value=completed"
       );
       // console.log(data2.data.data)
       return {'ongoing':data1.data.data,'completed':data2.data.data}
@@ -134,26 +134,32 @@ const GovernmentDashboard = () => {
     // },[]);
     const handleWardChange = async (e) => {
       setssiward(e.target.value);
-      // const data = await axios.get(
-      //   `http://localhost:5000/slumfilterdata?key=ward&value=${e.target.value}`
-      // );
-      // console.log(data.data);
-      // setssislums(data.data.data)
+      const data = await axios.get(
+        `https://samarserver.herokuapp.com/slumfilterdata?key=ward&value=${e.target.value}`
+      );
+      console.log(data.data);
+      setssislums(data.data.data)
       
     }
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         console.log("Clicked!")
-        setvisibility(true);
         
+        const temp = await axios.get(
+          `https://samarserver.herokuapp.com/filterdata?table=ssi&key=slum_id&value=${ssislum}`
+        );
+        setvisibility(true);
+        console.log(temp);
+        setindex(temp.data.data[0]);
+        console.log(index);
     }
 
     useEffect(()=>{
       setpastprojects()
-    },[ssiward,ssislums,ssislum,visibility])
+    },[ssiward,ssislums,ssislum,visibility,index])
     return (
       <div className="govtdash" style={{ marginTop: "12vh" }}>
         <Grid container justifyContent={"space-evenly"}>
-          <Grid item xs={12} md={11}>
+          <Grid item xs={12} md={11} className="map-sm">
             <MapBox />
           </Grid>
           <h1
@@ -174,11 +180,12 @@ const GovernmentDashboard = () => {
             >
               <Grid
                 item
-                sm={6}
+                xs={12}
                 md={4}
                 alignItems="center"
                 justifyContent="center"
-                style={{ marginLeft: "20%" }}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+                className="sm-drop"
               >
                 <label id="demo-simple-select-label">Ward: </label>
                 <Select
@@ -189,6 +196,7 @@ const GovernmentDashboard = () => {
                   label="wards"
                   style={{
                     minWidth: "100px",
+                    maxWidth: "200px",
                   }}
                   autoWidth={true}
                 >
@@ -199,7 +207,7 @@ const GovernmentDashboard = () => {
                   ))}
                 </Select>
               </Grid>
-              <Grid item sm={6} md={4}>
+              <Grid item xs={12} md={4} className="sm-drop">
                 <label id="demo-simple-select-label">Slum: </label>
                 <Select
                   labelId="demo-simple-select-label"
@@ -211,17 +219,25 @@ const GovernmentDashboard = () => {
                   label="slums"
                   style={{
                     minWidth: "100px",
+                    marginLeft: "auto",
+                    maxWidth: "200px",
                   }}
                   autoWidth={true}
                 >
-                  {ssislums1.map((e) => (
-                    <MenuItem value={e.slum_code} key={e.slum_name}>
+                  {ssislums.map((e) => (
+                    <MenuItem value={e.id} key={e.slum_name}>
                       {e.slum_name}
                     </MenuItem>
                   ))}
                 </Select>
               </Grid>
-              <Grid item xs={12} justifyContent="center" alignItems="center">
+              <Grid
+                item
+                xs={12}
+                justifyContent="center"
+                alignItems="center"
+                className="sm-button"
+              >
                 <div>
                   <Button
                     variant="contained"
@@ -240,22 +256,186 @@ const GovernmentDashboard = () => {
                 </div>
               </Grid>
               {visibility && (
-                <ReactScoreIndicator
-                  value={7.34}
-                  maxValue={10}
-                  lineWidth={10}
-                  stepsColors={[
-                    "#3da940",
-                    "#3da940",
-                    "#3da940",
-                    "#84c42b",
-                    "#f1bc00",
-                    "#ed8d00",
-                    "#d12000",
-                    "#53b83a",
-                  ]}
-                  style={{ maringTop: "30px" }}
-                />
+                <>
+                  <ReactScoreIndicator
+                    value={3.35}
+                    maxValue={10}
+                    lineWidth={10}
+                    stepsColors={[
+                      "#3da940",
+                      "#3da940",
+                      "#3da940",
+                      "#84c42b",
+                      "#f1bc00",
+                      "#ed8d00",
+                      "#d12000",
+                      "#53b83a",
+                    ]}
+                    style={{ maringTop: "30px" }}
+                  />
+                  <Box
+                    position={"center"}
+                    sx={{ flexGrow: 1 }}
+                    style={{ margin: "90px" }}
+                  >
+                    <Grid container spacing={2}>
+                      <Grid md={3} xs={6} item spacing={1}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Living Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >
+                              {0.42}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Housing Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >
+                              {0.82}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Water Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{0.52}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Sanitation Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{0.48}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Fuel Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{-0.14}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Energy Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{0.5}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Literacy Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{0.14}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid md={3} xs={6} item spacing={4}>
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Employment Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{-0.22}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                      <Grid
+                        md={3}
+                        xs={12}
+                        item
+                        spacing={4}
+                        style={{ marginLeft: "auto", marginRight: "auto" }}
+                      >
+                        <Card>
+                          <CardContent>
+                            <Typography
+                              variant="h5"
+                              style={{ textAlign: "center" }}
+                            >
+                              Ration Index
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{ textAlign: "center" }}
+                            >{0.82}</Typography>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </>
               )}
             </Grid>
           </Grid>
@@ -319,7 +499,10 @@ const GovernmentDashboard = () => {
           </Grid>
           <Grid item xs={12}></Grid>
           <Grid item md={5} className="carousel">
-            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+            <div
+              style={{ fontWeight: "500", marginTop: "1vh" }}
+              className="sm-head"
+            >
               Current Projects
             </div>
             <CarouselCard
@@ -328,19 +511,30 @@ const GovernmentDashboard = () => {
             />
           </Grid>
           <Grid item md={5} className="carousel">
-            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+            <div
+              style={{ fontWeight: "500", marginTop: "1vh" }}
+              className="sm-head"
+            >
               Past Projects
             </div>
             <CarouselCard projectDetails={pastProjects} />
           </Grid>
           <Grid item md={5} className="carousel">
-            <div style={{ fontWeight: "500", marginTop: "1vh" }}>
+            <div
+              style={{ fontWeight: "500", marginTop: "1vh" }}
+              className="sm-head"
+            >
               Upcoming Projects
             </div>
             <CarouselCard projectDetails={upcomingProjects} />
           </Grid>
           <Grid item md={5} className="carousel">
-            <div style={{ fontWeight: "500", marginTop: "1vh" }}>Notices</div>
+            <div
+              style={{ fontWeight: "500", marginTop: "1vh" }}
+              className="sm-head"
+            >
+              Notices
+            </div>
             <Notices notices={noticesList} />
           </Grid>
           <Grid item md={8}>

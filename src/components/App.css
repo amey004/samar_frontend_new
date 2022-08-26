@@ -1,6 +1,4 @@
-.boxes{
-    
-}
+
 .scroll-menu{
     width: 84% !important;
     margin-left: auto !important;
@@ -17,5 +15,18 @@
   }
   .subnoticeItem{
     width: 150px !important;
+  }
+  .sm-map{
+    width: 90vw !important;
+    height: 70vh !important;
+    margin-top: -100px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sm-head{
+    margin-left: 20px;
+  }
+  .report-sm{
+    margin-top: 40px;
   }
 }   

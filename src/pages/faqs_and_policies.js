@@ -66,7 +66,7 @@ function FaqsAndPolicies(){
 
     return (
             <Grid container spacing={2} padding={"2vh"} marginTop={"0vh"}>
-                <Grid item padding={"2vh"} xs={6} marginLeft={"3vw"}>
+                <Grid item padding={"2vh"} md={6} marginLeft={"3vw"}>
                     <Box className="container-faq">
                         <div style={{
                             fontWeight:500,
@@ -77,7 +77,7 @@ function FaqsAndPolicies(){
                         } )}
                     </Box>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item md={5}>
                     <Box className="container-faq">
                         <div style={{
                                 fontWeight:500,

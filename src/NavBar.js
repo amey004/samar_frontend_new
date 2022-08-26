@@ -22,7 +22,7 @@ function NavBar (){
   }
   const logout = async () => {
     console.log("logging out");
-    await axios.get("http://localhost:5000/user/logout");
+    await axios.get("https://samarserver.herokuapp.com/user/logout");
     await getLoggedIn();
   }
   useEffect(()=>{
@@ -33,8 +33,8 @@ function NavBar (){
     }
   },[url,role])
     return (
-      <div style={{ display: "flex" }}>
-        <Navbar expand="md" style={{ width: "100%", height:"9vh" }} fixed="top">
+      <div style={{ display: "flex" }} className="navbar">
+        <Navbar expand="md" style={{ width: "100%" }} fixed="top">
           <NavbarToggler className="mr-2" onClick={toggleNav} />
           <NavbarBrand className="" href="/" style={{ width: "100%" }}>
             <div style={{ display: "inline" }}>
@@ -73,6 +73,7 @@ function NavBar (){
             <Nav classname="container-fluid justify-content-end" navbar>
               <NavItem>
                 <NavLink
+                  onClick={toggleNav}
                   className="nav-link"
                   exact
                   to="/"
@@ -86,6 +87,7 @@ function NavBar (){
               {loggedIn && (
                 <NavItem>
                   <NavLink
+                    onClick={toggleNav}
                     className="nav-link"
                     exact
                     to={url}
@@ -97,8 +99,9 @@ function NavBar (){
                   </NavLink>
                 </NavItem>
               )}
-              <NavItem style={{width:"13vw"}}>
+              <NavItem style={{ width: "13vw" }}>
                 <NavLink
+                  onClick={toggleNav}
                   className="nav-link"
                   exact
                   to="/report"
@@ -116,6 +119,7 @@ function NavBar (){
                     className="nav-link"
                     NavLink
                     onClick={() => {
+                      toggleNav();
                       console.log("clicked!");
                       logout();
                     }}
@@ -127,6 +131,7 @@ function NavBar (){
               ) : (
                 <NavItem>
                   <NavLink
+                    onClick={toggleNav}
                     className="nav-link"
                     exact
                     to="/login"
