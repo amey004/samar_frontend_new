@@ -10,7 +10,7 @@ function InfoCard(props){
         padding:"5px",
         borderRadius:"10px",
     }}>
-        <div style={{fontSize:"18px"}}>{info.name}</div>
+        <div style={{fontSize:"18px", fontWeight:"500"}}>{info.name}</div>
         <div style={{fontSize:"15px"}}>{info.address}</div>
         <div style={{fontSize:"15px"}}>{info.contact}</div>
     </Box>);

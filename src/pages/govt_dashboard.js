@@ -244,7 +244,7 @@ const GovernmentDashboard = () => {
                   value={7.34}
                   maxValue={10}
                   lineWidth={10}
-                  colors={[
+                  stepsColors={[
                     "#3da940",
                     "#3da940",
                     "#3da940",

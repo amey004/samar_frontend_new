@@ -49,7 +49,7 @@ function LandingPage() {
         <NewsCarousel />
         <br/>
         <div style={{paddingLeft:"3vw", fontSize:"25px", fontWeight:"500"}}>About SAMAR</div>
-        <Grid container>
+        <Grid container justifyContent={"space-evenly"}>
           <Grid item md={3} justifyContent={"space-evenly"} marginLeft={"5vw"}>
             <img src={logo} style={{width:"15vw", alignContent:"center", marginLeft:"2vw"}}/>
           </Grid>
@@ -67,9 +67,9 @@ function LandingPage() {
         </Grid>
         <br/>
         <br/>
-        <div style={{paddingLeft:"3vw", fontSize:"25px", fontWeight:"500"}}>What's around me?</div> 
+        <div style={{paddingLeft:"3vw", fontSize:"25px", fontWeight:"500"}}>Facilities around me</div> 
         <br/>
-        <Grid container>
+        <Grid container justifyContent={"space-evenly"}>
           <Grid item justifyContent={"space-evenly"}>
             <h6>Hospitals</h6>
             {hospitals.map((e) => (<InfoCard data={e}/>))}
@@ -83,6 +83,9 @@ function LandingPage() {
             {schools.map((e) => (<InfoCard data={e}/>))}
           </Grid>
         </Grid>
+        <br/>
+        <div style={{paddingLeft:"3vw", fontSize:"25px", fontWeight:"500"}}>FAQs and policies</div> 
+        
         <FaqsAndPolicies/>
       </div>
   );
