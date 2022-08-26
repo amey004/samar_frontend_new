@@ -45,17 +45,17 @@ code {
 .home{
   display: block;
   justify-content: center;
-
+  /* margin-top:"12vh", */
 }
 
 .carousel{
-  height: 88vh;
+  height: 90vh;
   color: #000000;
   align-content: right;
 }
 
 .carousel-img{
-  height: 88vh;
+  height: 90vh;
   width: 100%;
   margin-left: auto;
   margin-right: auto;

@@ -24,7 +24,7 @@ function MapBox(){
         console.log(norm*100);
         if((norm*100)>1.5){
             setSlumStyle({
-                color:"green",
+                color:"yellow",
                 weight:0.7,
                 fillColor:"red",
                 fillOpacity:(norm*100)
@@ -36,7 +36,7 @@ function MapBox(){
         //         <p>Population:{pop}</p>
         //     </div>;
         layer.bindPopup(slum_name);
-        layer.bindPopup(slum_code)
+        // layer.bindPopup(slum_code)
         // setSlumStyle({});
         layer.setStyle(slumStyle);
         layer.on({
@@ -55,7 +55,7 @@ function MapBox(){
     useEffect(() => {}, [slumStyle]);
 
     return (<div>
-        <MapContainer style={{height: "80vh", width:"80vw"}} center={[18.5,73.9]}  zoom={12} >
+        <MapContainer style={{height: "80vh", width:"90vw"}} center={[18.5,73.9]}  zoom={12} >
             <GeoJSON style={slumStyle} data= {slumData} onEachFeature={onEachSlum} />
                 <TileLayer 
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
