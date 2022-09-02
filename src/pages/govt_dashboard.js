@@ -114,10 +114,10 @@ const GovernmentDashboard = () => {
     getData();
     const getProjects = async () => {
       const data1 = await axios.get(
-        "https://samarserver.herokuapp.com/filterdata?table=projects&key=status&value=ongoing"
+        "http://localhost:5000/filterdata?table=projects&key=status&value=ongoing"
       );
       const data2 = await axios.get(
-        "https://samarserver.herokuapp.com/filterdata?table=projects&key=status&value=completed"
+        "http://localhost:5000/filterdata?table=projects&key=status&value=completed"
       );
       // console.log(data2.data.data)
       return {'ongoing':data1.data.data,'completed':data2.data.data}
@@ -135,7 +135,7 @@ const GovernmentDashboard = () => {
     const handleWardChange = async (e) => {
       setssiward(e.target.value);
       const data = await axios.get(
-        `https://samarserver.herokuapp.com/slumfilterdata?key=ward&value=${e.target.value}`
+        `http://localhost:5000/slumfilterdata?key=ward&value=${e.target.value}`
       );
       console.log(data.data);
       setssislums(data.data.data)
@@ -145,7 +145,7 @@ const GovernmentDashboard = () => {
         console.log("Clicked!")
         
         const temp = await axios.get(
-          `https://samarserver.herokuapp.com/filterdata?table=ssi&key=slum_id&value=${ssislum}`
+          `http://localhost:5000/filterdata?table=ssi&key=slum_id&value=${ssislum}`
         );
         setvisibility(true);
         console.log(temp);

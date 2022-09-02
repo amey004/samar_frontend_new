@@ -22,7 +22,7 @@ function ReportBox(){
     const sendData = async () =>{
       try {
         const data = await axios.post(
-          "https://samarserver.herokuapp.com/report",
+          "http://localhost:5000/report",
           {
             project,
             name,
@@ -65,7 +65,7 @@ function ReportBox(){
     useEffect(() => {
       const  fetchData = async () =>{
           var data = await axios.get(
-            "https://samarserver.herokuapp.com/fetchdata?table=projects"
+            "http://localhost:5000/fetchdata?table=projects"
           );
           console.log(data.data);
           setProjects(data.data);

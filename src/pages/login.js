@@ -42,7 +42,7 @@ function Login() {
     try {
       console.log(email, password, category);
       console.log(process.env.REACT_APP_SERVER_URL);
-      await axios.post("https://samarserver.herokuapp.com/user/signin", {
+      await axios.post("http://localhost:5000/user/signin", {
         email,
         password,
         category,
