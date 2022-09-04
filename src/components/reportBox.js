@@ -22,7 +22,7 @@ function ReportBox(){
     const sendData = async () =>{
       try {
         const data = await axios.post(
-          "http://localhost:5000/report",
+          "https://samarserver.herokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/report",
           {
             project,
             name,
@@ -65,7 +65,7 @@ function ReportBox(){
     useEffect(() => {
       const  fetchData = async () =>{
           var data = await axios.get(
-            "http://localhost:5000/fetchdata?table=projects"
+            "https://samarserver.herokuapp.com/fetchdata?table=projects"
           );
           console.log(data.data);
           setProjects(data.data);

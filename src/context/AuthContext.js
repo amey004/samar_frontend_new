@@ -11,10 +11,10 @@ function AuthContextProvider(props) {
 
   async function getLoggedIn() {
     const loggedInres = await axios.get(
-      "http://localhost:5000/user/loggedIn"
+      "https://samarserver.herokuapp.com/user/loggedIn"
     );
     const category = await axios.get(
-      "http://localhost:5000/user/role"
+      "https://samarserver.herokuapp.com/user/role"
     );
     setrole(category.data.role);
     setloggedIn(loggedInres.data);
