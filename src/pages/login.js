@@ -47,6 +47,7 @@ function Login() {
         password,
         category,
       });
+      console.log(email,password,category)
       await getLoggedIn();
       if(category==='developer'){
         navigate("/dev-dashboard");
