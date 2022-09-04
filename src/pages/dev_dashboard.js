@@ -36,7 +36,7 @@ function DeveloperDashboard(){
     const [grievances,setgrievances] = useState([]);
     const getData = async () => {
         const data = await axios.get(
-          "https://samarserver.herokuapp.com/grievances"
+          "http://localhost:5000/grievances"
         );
         setgrievances(data.data);
     }

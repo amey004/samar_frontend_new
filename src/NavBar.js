@@ -22,7 +22,7 @@ function NavBar (){
   }
   const logout = async () => {
     console.log("logging out");
-    await axios.get("https://samarserver.herokuapp.com/user/logout");
+    await axios.get("http://localhost:5000/user/logout");
     await getLoggedIn();
   }
   useEffect(()=>{
