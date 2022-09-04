@@ -16,7 +16,7 @@ function AuthContextProvider(props) {
     const category = await axios.get(
       "https://samarserver.herokuapp.com/user/role"
     );
-    setrole(category.data.role);
+    // setrole(category.data.role);
     setloggedIn(loggedInres.data);
   }
 

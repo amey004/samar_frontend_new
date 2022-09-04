@@ -15,7 +15,7 @@ import "./index.css"
 
 function NavBar (){
   const[isNavOpen,setisNavOpen] = useState(false);
-  const[url,seturl] = useState("/");
+  const[url,seturl] = useState("");
   const {loggedIn,getLoggedIn,role} = useContext(AuthContext);
   const toggleNav = () => {
       setisNavOpen(!isNavOpen)
@@ -31,7 +31,7 @@ function NavBar (){
     }else if(role==='authority'){
       seturl("/govt-dashboard")
     }
-  },[url,role])
+  },[role])
     return (
       <div style={{ display: "flex" }} className="navbar">
         <Navbar expand="md" style={{ width: "100%" }} fixed="top">
