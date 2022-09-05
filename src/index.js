@@ -4,18 +4,9 @@ import App from './App';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import reportWebVitals from './reportWebVitals';
-import {Provider} from "react-redux"
-import store from './pages/kepler/store'
 import { AuthContextProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
-// const reducers = combineReducers({
-//   keplerGl: keplerGlReducer,
-// });
-
-// const store = createStore(reducers, {}, applyMiddleware(taskMiddleware));
 
 root.render(
   <React.StrictMode>

@@ -10,7 +10,6 @@ import ErrorPage from './pages/error';
 import ReportSuggest from "./pages/report_suggest";
 import DeveloperDashboard from "./pages/dev_dashboard";
 import GovernmentDashboard from "./pages/govt_dashboard";
-import Map from "./pages/kepler/maps";
 import AuthContext from "./context/AuthContext";
 
 
