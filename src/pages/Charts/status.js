@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import '../App.css';
 import { Chart as ChartJs, Tooltip, Title, ArcElement, Legend } from 'chart.js';
-import Chart from 'chart.js/auto';
 import { Doughnut} from 'react-chartjs-2';
 
 ChartJs.register(Tooltip, Title, ArcElement, Legend);
@@ -21,7 +20,7 @@ const options = {
 export const Status = (props) => {
   var ward = props.ward;
   function filterWard(wardName){
-    return wardName.WARD_2017 == ward;
+    return wardName.WARD_2017 === ward;
   }
     const [tenData, setTenData] = useState({
         datasets: [{
@@ -62,12 +61,12 @@ export const Status = (props) => {
         }
         else{
           const filteredRes = res.filter(filterWard);
-          for(var i of filteredRes) {
-            if (!obj[i.SRA_STATUS]) {
-              obj[i.SRA_STATUS] = 1;
+          for(var j of filteredRes) {
+            if (!obj[j.SRA_STATUS]) {
+              obj[j.SRA_STATUS] = 1;
               
-            } else if (obj[i.SRA_STATUS]) {
-              obj[i.SRA_STATUS] += 1;
+            } else if (obj[j.SRA_STATUS]) {
+              obj[j.SRA_STATUS] += 1;
             }
           }
         }
@@ -77,6 +76,7 @@ export const Status = (props) => {
           //console.log(`${key}`+':'+`${value}`)
           label.push(`${key}`);
           data.push(`${value}`);
+          return [];
         })
 
         setTenData({

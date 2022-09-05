@@ -82,13 +82,13 @@ export const Household = (props) => {
           }
         }
         else{
-          for (var i of res) {
-            if(props.ward === i.WARD_2017){
-              if (!obj[i.SLUM_NAME]) {
-                obj[i.SLUM_NAME] = parseFloat(i.APPROX_HH);
+          for (var j of res) {
+            if(props.ward === j.WARD_2017){
+              if (!obj[j.SLUM_NAME]) {
+                obj[j.SLUM_NAME] = parseFloat(j.APPROX_HH);
               }
-              else if (obj[i.SLUM_NAME]) {
-                obj[i.SLUM_NAME] += parseFloat(i.APPROX_HH);
+              else if (obj[j.SLUM_NAME]) {
+                obj[j.SLUM_NAME] += parseFloat(j.APPROX_HH);
               }
             }
             
@@ -100,6 +100,7 @@ export const Household = (props) => {
           //console.log(`${key}`+':'+`${value}`)
           label.push(`${key}`);
           data.push(`${value}`);
+          return [];
         })
 
       setHhdata({

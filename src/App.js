@@ -4,7 +4,6 @@ import NavBar from "./NavBar";
 import LandingPage from "./pages/homepage";
 import Login from './pages/login';
 import Register from './pages/register';
-import FaqsAndPolicies from './pages/faqs_and_policies';
 import ViewReport from './pages/report_template';
 import ErrorPage from './pages/error';
 import ReportSuggest from "./pages/report_suggest";
@@ -23,7 +22,6 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/faq" element={<FaqsAndPolicies />} /> */}
           <Route path="/report" element={<ReportSuggest />} />
           <Route path="/error" element={<ErrorPage />} />
           <Route path="/detailed-report" element={<ViewReport/>}/>
@@ -38,7 +36,6 @@ function App() {
           ) : (
             <Route path="/govt-dashboard" element={<ErrorPage />} />
           )}
-          {/* <Route path="/map" element={<Map />} /> */}
         </Routes>
       </Router>
     </div>

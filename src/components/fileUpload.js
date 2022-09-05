@@ -1,5 +1,4 @@
 import React,{useCallback} from 'react';
-import axios from 'axios';
 import { useDropzone } from "react-dropzone";
 import {read, utils} from 'xlsx';
 
@@ -13,7 +12,7 @@ function Dropzone({ open }) {
       var workbook = read(contents, { type: rABS ? "binary" : "array" })
       console.log(workbook);
       var sheet_name_list = workbook.SheetNames[0];
-      var jsonFromExcel = utils.sheet_to_json(workbook.Sheets[sheet_name_list],)
+      utils.sheet_to_json(workbook.Sheets[sheet_name_list],)
       // displayContents(contents);
     };
     reader.readAsText(file);

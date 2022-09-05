@@ -1,12 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import {Box, TextField, Button, Select, MenuItem,Grid} from '@material-ui/core';
-import slum from '../images/slum1.jpg';
 import axios from "axios"
 import "./App.css"
 import { injectStyle } from "react-toastify/dist/inject-style";
 import {toast,ToastContainer} from "react-toastify"
 
-
+ 
 if (typeof window !== "undefined") {
   injectStyle();
 }
@@ -22,7 +21,7 @@ function ReportBox(){
     const sendData = async () =>{
       try {
         const data = await axios.post(
-          "https://samarserver.herokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/rokuapp.com/report",
+          "https://samarserver.herokuapp.com/report",
           {
             project,
             name,

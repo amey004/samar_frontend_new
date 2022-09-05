@@ -15,7 +15,7 @@ function MapBox(){
     const onEachSlum = (slum, layer)=>{
         // console.log(slum);
         const slum_name = slum.properties.SLUM_NAME 
-        const slum_code = slum.properties.SLUM_CODE
+        // const slum_code = slum.properties.SLUM_CODE
         console.log(slum_name);
         var min = 72;
         var max = 22446;
